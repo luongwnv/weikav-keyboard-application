@@ -64,13 +64,15 @@ Select a key and choose **SOCD** for opposing-key priority, **MT** for separate 
 
 **Settings** contains keyboard finish, local profiles, language, appearance and connection details. Choose **light, dark or system** appearance and **Vietnamese, English, Simplified Chinese, Japanese, Korean, French, German or Spanish**. Language files and fonts are bundled and work offline.
 
+Turn on **Launch at login** to open Weikav Studio when you sign in. On macOS this requires macOS 13 or newer; your system may ask you to allow the app under Login Items. Windows users can also manage the setting under Startup apps.
+
 Profiles can be named, imported and exported as JSON. Selecting a profile does not write it to the keyboard; use **Apply** when ready. Changing the keyboard finish updates its appearance in the app.
 
 ## Compatibility
 
 - Configuration: **USB-C and NUT75 2.4 GHz receiver**.
 - Bluetooth configuration is not supported.
-- GIF/animation upload, audio/AI lighting, firmware updating and factory reset are not included.
+- Experimental GIF presets and three live lighting presets are available with the NUT75 2.4 GHz receiver. Live presets run while the app is open. GIF editing, importing AI scripts, audio lighting, firmware updating and factory reset are not included.
 - Physical hardware checks have been performed on macOS. Windows packages are built on Windows; Windows hardware behavior is not yet verified.
 
 Weikav Studio is an independent application and is not affiliated with WEIKAV or Logitech. Keyboard artwork and vendor icons belong to their respective owners.

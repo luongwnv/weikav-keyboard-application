@@ -911,6 +911,14 @@
     "Standard wiederherstellen",
     "Restaurar valores predeterminados"
   ],
+  "Delay": [
+    "延迟",
+    "遅延",
+    "지연",
+    "Délai",
+    "Verzögerung",
+    "Retardo"
+  ],
   "Delay before action": [
     "操作前延迟",
     "操作前の遅延",
@@ -2766,5 +2774,165 @@
     "Impossible de déconnecter le clavier",
     "Tastatur konnte nicht getrennt werden",
     "No se pudo desconectar el teclado"
+  ],
+  "Effect sent": [
+    "效果已发送",
+    "エフェクトを送信しました",
+    "효과 전송됨",
+    "Effet envoyé",
+    "Effekt gesendet",
+    "Efecto enviado"
+  ],
+  "Runs while the app is open": [
+    "应用打开时运行",
+    "アプリを開いている間動作",
+    "앱이 열려 있는 동안 실행",
+    "Fonctionne tant que l’application est ouverte",
+    "Läuft bei geöffneter App",
+    "Funciona mientras la aplicación está abierta"
+  ],
+  "A supported 2.4 GHz connection is required": [
+    "需要支持的 2.4 GHz 连接",
+    "対応する 2.4 GHz 接続が必要",
+    "지원되는 2.4 GHz 연결이 필요합니다",
+    "Une connexion 2,4 GHz compatible est requise",
+    "Eine unterstützte 2,4-GHz-Verbindung ist erforderlich",
+    "Se requiere una conexión de 2,4 GHz compatible"
+  ],
+  "Rainbow": [
+    "彩虹",
+    "虹",
+    "무지개",
+    "Arc-en-ciel",
+    "Regenbogen",
+    "Arcoíris"
+  ],
+  "Fireworks": [
+    "烟花",
+    "花火",
+    "불꽃놀이",
+    "Feux d’artifice",
+    "Feuerwerk",
+    "Fuegos artificiales"
+  ],
+  "Heart": [
+    "爱心",
+    "ハート",
+    "하트",
+    "Cœur",
+    "Herz",
+    "Corazón"
+  ],
+  "Glacier": [
+    "冰川",
+    "氷河",
+    "빙하",
+    "Glacier",
+    "Gletscher",
+    "Glaciar"
+  ],
+  "Spring": [
+    "春天",
+    "春",
+    "봄",
+    "Printemps",
+    "Frühling",
+    "Primavera"
+  ],
+  "Jade": [
+    "翡翠",
+    "翡翠",
+    "비취",
+    "Jade",
+    "Jade",
+    "Jade"
+  ],
+  "White": [
+    "白色",
+    "白",
+    "흰색",
+    "Blanc",
+    "Weiß",
+    "Blanco"
+  ],
+  "Plum": [
+    "梅色",
+    "梅",
+    "자두",
+    "Prune",
+    "Pflaume",
+    "Ciruela"
+  ],
+  "Orange": [
+    "橙色",
+    "オレンジ",
+    "주황색",
+    "Orange",
+    "Orange",
+    "Naranja"
+  ],
+  "Import JSON": [
+    "导入 JSON",
+    "JSON を読み込む",
+    "JSON 가져오기",
+    "Importer JSON",
+    "JSON importieren",
+    "Importar JSON"
+  ],
+  "Hide": [
+    "隐藏",
+    "非表示",
+    "숨기기",
+    "Masquer",
+    "Ausblenden",
+    "Ocultar"
+  ],
+  "Show": [
+    "显示",
+    "表示",
+    "표시",
+    "Afficher",
+    "Anzeigen",
+    "Mostrar"
+  ],
+  "Launch at login": [
+    "登录时启动",
+    "ログイン時に起動",
+    "로그인 시 실행",
+    "Ouvrir à la connexion",
+    "Bei Anmeldung starten",
+    "Iniciar sesión al encender"
+  ],
+  "Could not change the login setting": [
+    "无法更改登录设置",
+    "ログイン設定を変更できません",
+    "로그인 설정을 변경할 수 없습니다",
+    "Impossible de modifier le lancement",
+    "Anmeldeeinstellung konnte nicht geändert werden",
+    "No se pudo cambiar el inicio de sesión"
+  ],
+  "Allow the app in the system login settings.": [
+    "请在系统登录设置中允许此应用。",
+    "システムのログイン設定でアプリを許可してください。",
+    "시스템 로그인 설정에서 앱을 허용하세요.",
+    "Autorisez l’application dans les réglages de connexion.",
+    "Erlaube die App in den Anmeldeeinstellungen.",
+    "Permite la aplicación en los ajustes de inicio."
+  ],
+  "Reset advanced keys": [
+    "重置高级按键",
+    "高度なキーをリセット",
+    "고급 키 초기화",
+    "Réinitialiser les touches avancées",
+    "Erweiterte Tasten zurücksetzen",
+    "Restablecer teclas avanzadas"
+  ],
+  "Only applies to the selected layer": [
+    "仅适用于所选层",
+    "選択したレイヤーのみに適用",
+    "선택한 레이어에만 적용",
+    "S’applique uniquement à la couche sélectionnée",
+    "Gilt nur für die gewählte Ebene",
+    "Solo se aplica a la capa seleccionada"
   ]
 }

@@ -1,6 +1,12 @@
 use super::*;
 impl NutApp {
     pub(super) fn device_stage(&mut self, ui: &mut egui::Ui, r: Rect) {
+        if self.login_status_checked.elapsed() >= Duration::from_secs(3) {
+            self.login_status =
+                crate::autostart::status().unwrap_or(crate::autostart::Status::Unavailable);
+            self.login_status_checked = Instant::now();
+        }
+        ui.ctx().request_repaint_after(Duration::from_secs(3));
         let body = page_body(ui, r, tr("Cài đặt"));
         let mut child = ui.new_child(egui::UiBuilder::new().max_rect(body));
         child.set_clip_rect(body);
@@ -161,10 +167,56 @@ impl NutApp {
                                 self.changed();
                             }
                             ui.add_space(16.);
-                            ui.checkbox(
-                                &mut self.show_labels,
-                                RichText::new(tr("Hiện gán phím trên bàn phím")).size(14.),
+                            ui.label(RichText::new(tr("Hiện gán phím trên bàn phím")).size(14.));
+                            ui.add_space(6.);
+                            ui.horizontal(|ui| {
+                                for (value, label) in [(false, "Ẩn"), (true, "Hiện")] {
+                                    if assignment_choice(
+                                        ui,
+                                        label,
+                                        value == self.show_labels,
+                                        value,
+                                    )
+                                    .clicked()
+                                    {
+                                        self.show_labels = value;
+                                    }
+                                }
+                            });
+                            ui.add_space(12.);
+                            let active = matches!(
+                                self.login_status,
+                                crate::autostart::Status::Enabled
+                                    | crate::autostart::Status::RequiresApproval
                             );
+                            let mut value = u8::from(active);
+                            ui.add_enabled_ui(
+                                self.login_status != crate::autostart::Status::Unavailable,
+                                |ui| {
+                                    device_switch(ui, tr("Chạy khi đăng nhập"), &mut value);
+                                },
+                            );
+                            if (value != 0) != active {
+                                match crate::autostart::set_enabled(value != 0) {
+                                    Ok(status) => self.login_status = status,
+                                    Err(error) => {
+                                        eprintln!("{error:#}");
+                                        self.login_status = crate::autostart::status()
+                                            .unwrap_or(crate::autostart::Status::Unavailable);
+                                        self.tell("Không thay đổi được cài đặt khởi động", true);
+                                    }
+                                }
+                                self.login_status_checked = Instant::now();
+                            }
+                            if self.login_status == crate::autostart::Status::RequiresApproval {
+                                ui.label(
+                                    RichText::new(tr(
+                                        "Cho phép ứng dụng trong cài đặt đăng nhập của hệ thống.",
+                                    ))
+                                    .size(13.)
+                                    .color(muted()),
+                                );
+                            }
                         });
                     card_rects.push(left.response.rect);
                     let right = egui::Frame::new()
@@ -315,6 +367,50 @@ impl NutApp {
                 }
             });
     }
+}
+fn assignment_choice(
+    ui: &mut egui::Ui,
+    label: &str,
+    selected: bool,
+    shown: bool,
+) -> egui::Response {
+    let (rect, response) = ui.allocate_exact_size(vec2(114., 48.), Sense::click());
+    ui.painter().rect(
+        rect,
+        6.,
+        if selected { lilac() } else { surface() },
+        Stroke::new(
+            if selected { 1.5_f32 } else { 1. },
+            if selected { purple() } else { line() },
+        ),
+        StrokeKind::Inside,
+    );
+    let center = rect.left_center() + vec2(22., 0.);
+    icon(
+        ui.painter(),
+        center,
+        0,
+        if selected { purple() } else { muted() },
+        0.9,
+    );
+    if !shown {
+        ui.painter().line_segment(
+            [center + vec2(-9., 9.), center + vec2(9., -9.)],
+            Stroke::new(1.6_f32, if selected { purple() } else { muted() }),
+        );
+    }
+    text(
+        ui.painter(),
+        rect.left_center() + vec2(42., 0.),
+        label,
+        14.,
+        if selected { purple() } else { muted() },
+        Align2::LEFT_CENTER,
+    );
+    response.widget_info(|| {
+        egui::WidgetInfo::selected(egui::WidgetType::SelectableLabel, true, selected, tr(label))
+    });
+    response
 }
 fn setting_row(ui: &mut egui::Ui, label: &str, content: impl FnOnce(&mut egui::Ui)) {
     ui.horizontal(|ui| {

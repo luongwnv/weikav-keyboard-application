@@ -150,26 +150,60 @@ impl NutApp {
     pub(super) fn binding_reset(&mut self, ui: &mut egui::Ui, id: u8) {
         ui.add_space(12.);
         ui.separator();
-        ui.horizontal(|ui| {
-            if ui
-                .add(
-                    egui::Button::new(RichText::new(tr("Khôi phục mặc định")).size(13.))
-                        .frame(false),
-                )
-                .clicked()
-            {
-                self.assign(DEFAULT);
-            }
-            if self.profile().patches(self.function).contains_key(&id)
-                && ui
-                    .add(egui::Button::new(RichText::new(tr("Hoàn tác")).size(13.)).frame(false))
-                    .clicked()
-            {
+        ui.add_space(8.);
+        let can_undo =
+            self.binding_reset_undo
+                .as_ref()
+                .is_some_and(|(profile, function, key, changes)| {
+                    *profile == self.library.active
+                        && *function == self.function
+                        && *key == id
+                        && changes.iter().all(|(key, _)| {
+                            self.profile().patches(*function).get(key) == Some(&DEFAULT)
+                        })
+                });
+        let label = if can_undo {
+            "Hoàn tác"
+        } else {
+            "Khôi phục mặc định"
+        };
+        if ui
+            .add_sized([ui.available_width(), 36.], button(label, false))
+            .clicked()
+        {
+            if can_undo {
+                if let Some((_, function, _, changes)) = self.binding_reset_undo.take() {
+                    let patches = self.profile_mut().patches_mut(function);
+                    for (key, previous) in changes {
+                        patches.insert(key, previous);
+                    }
+                    self.changed();
+                }
+            } else {
                 let function = self.function;
-                self.profile_mut().patches_mut(function).remove(&id);
-                self.changed();
+                let before = self.profile().patches(function).clone();
+                self.assign(DEFAULT);
+                let changes = self
+                    .profile()
+                    .patches(function)
+                    .iter()
+                    .filter(|(key, value)| before.get(key) != Some(*value))
+                    .map(|(key, _)| {
+                        let previous = before
+                            .get(key)
+                            .copied()
+                            .or_else(|| {
+                                self.snapshot
+                                    .as_ref()
+                                    .map(|snapshot| snapshot.binding(function, *key))
+                            })
+                            .unwrap_or(DEFAULT);
+                        (*key, previous)
+                    })
+                    .collect();
+                self.binding_reset_undo = Some((self.library.active, function, id, changes));
             }
-        });
+        }
     }
 
     pub(super) fn macro_bindings(&mut self, ui: &mut egui::Ui) {
@@ -278,12 +312,26 @@ impl NutApp {
             0 => {
                 key_choice(ui, "Chạm", &mut self.advanced_keys[0], false);
                 key_choice(ui, "Giữ", &mut self.advanced_keys[1], false);
-                options_slider(
-                    ui,
-                    egui::Slider::new(&mut self.advanced_delay, 10..=1000)
-                        .step_by(10.)
-                        .suffix(" ms"),
-                );
+                ui.horizontal(|ui| {
+                    ui.add_sized(
+                        [110., 36.],
+                        egui::Label::new(RichText::new(tr("Độ trễ")).size(14.)),
+                    );
+                    ui.spacing_mut().slider_width = (ui.available_width() - 84.).max(40.);
+                    options_slider(
+                        ui,
+                        egui::Slider::new(&mut self.advanced_delay, 10..=1000)
+                            .step_by(10.)
+                            .show_value(false),
+                    );
+                    ui.add_sized(
+                        [76., 36.],
+                        egui::DragValue::new(&mut self.advanced_delay)
+                            .range(10..=1000)
+                            .speed(10.)
+                            .suffix(" ms"),
+                    );
+                });
             }
             1 => key_choice(ui, "Phím", &mut self.advanced_keys[0], false),
             2 => {
@@ -438,14 +486,17 @@ impl NutApp {
 
 fn key_choice(ui: &mut egui::Ui, label: &str, value: &mut u8, modifiers: bool) {
     ui.horizontal(|ui| {
-        ui.label(RichText::new(tr(label)).size(14.));
+        ui.add_sized(
+            [110., 36.],
+            egui::Label::new(RichText::new(tr(label)).size(14.)),
+        );
         combo_box(label)
             .selected_text(if *value == 0 {
                 tr("Không").into()
             } else {
                 model::key_label(*value)
             })
-            .width(150.)
+            .width(ui.available_width().max(100.))
             .show_ui(ui, |ui| {
                 if modifiers {
                     dropdown_value(ui, value, 0, tr("Không"));

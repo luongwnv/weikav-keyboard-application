@@ -79,6 +79,138 @@ fn color_mode_card(
 }
 
 impl NutApp {
+    pub(super) fn ai_lighting_supported(&self) -> bool {
+        self.snapshot.as_ref().is_some_and(|s| {
+            s.entry.product_id == crate::device::PRODUCT_RECEIVER
+                && s.report_size == 64
+                && s.info.lighting_version == 1
+        })
+    }
+
+    pub(super) fn animation_supported(&self) -> bool {
+        self.snapshot.as_ref().is_some_and(|s| {
+            s.entry.product_id == crate::device::PRODUCT_RECEIVER
+                && s.info.gif_max_frames > 0
+                && self.animations[self.animation_selected].data.len() / 81
+                    <= usize::from(s.info.gif_max_frames)
+        })
+    }
+
+    pub(super) fn stop_ai_lighting(&mut self) {
+        if self.ai_playing {
+            self.ai_playing = false;
+            if let Some(original) = self.ai_original_light.take() {
+                self.send(Command::StopColors(original));
+            }
+        }
+    }
+
+    pub(super) fn ai_lighting_inspector(&mut self, ui: &mut egui::Ui) {
+        for (id, name) in ["Cầu vồng", "Pháo hoa", "Trái tim"].into_iter().enumerate() {
+            if ui
+                .add_sized(
+                    [ui.available_width(), 46.],
+                    button(name, self.ai_effect == id),
+                )
+                .clicked()
+            {
+                self.ai_effect = id;
+            }
+        }
+        ui.add_space(12.);
+        ui.label(
+            RichText::new(tr("Chạy khi ứng dụng đang mở"))
+                .size(13.)
+                .color(muted()),
+        );
+        if !self.ai_lighting_supported() && self.snapshot.is_some() {
+            ui.label(
+                RichText::new(tr("Cần kết nối 2.4 GHz hỗ trợ"))
+                    .size(13.)
+                    .color(muted()),
+            );
+        }
+    }
+
+    pub(super) fn animation_inspector(&mut self, ui: &mut egui::Ui) {
+        let mut import = false;
+        let (row, _) = ui.allocate_exact_size(vec2(ui.available_width(), 36.), Sense::hover());
+        {
+            let rect = Rect::from_min_size(pos2(row.right() - 36., row.top()), vec2(36., 36.));
+            let mut child = ui.new_child(egui::UiBuilder::new().max_rect(rect));
+            let ui = &mut child;
+            let more =
+                super::macro_editor::macro_header_tool(ui, true).on_hover_text(tr("Tuỳ chọn"));
+            egui::Popup::from_toggle_button_response(&more)
+                .close_behavior(egui::PopupCloseBehavior::CloseOnClickOutside)
+                .width(200.)
+                .frame(
+                    egui::Frame::popup(ui.style())
+                        .fill(surface())
+                        .stroke(Stroke::new(1.0_f32, line()))
+                        .corner_radius(6.)
+                        .inner_margin(6),
+                )
+                .show(|ui| {
+                    ui.set_width(188.);
+                    if super::macro_editor::menu_row(ui, tr("Nhập JSON"), true, false).clicked() {
+                        import = true;
+                        ui.close();
+                    }
+                });
+        }
+        ui.add_space(8.);
+        let names = [
+            "Trái tim",
+            "Băng hà",
+            "Mùa xuân",
+            "Ngọc bích",
+            "Trắng",
+            "Mận",
+            "Cam",
+        ];
+        for (index, animation) in self.animations.iter().enumerate() {
+            let name = names.get(index).copied().unwrap_or(&animation.name);
+            if ui
+                .add_sized(
+                    [ui.available_width(), 38.],
+                    button(name, self.animation_selected == index),
+                )
+                .clicked()
+            {
+                self.animation_selected = index;
+                self.preview_time = 0.;
+            }
+        }
+        if import
+            && let Some(path) = rfd::FileDialog::new()
+                .add_filter("Animation", &["json"])
+                .pick_file()
+        {
+            let imported = (|| -> anyhow::Result<crate::animation::Animation> {
+                anyhow::ensure!(
+                    std::fs::metadata(&path)?.len() <= 1_000_000,
+                    "Animation file too large"
+                );
+                Ok(serde_json::from_slice(&std::fs::read(&path)?)?)
+            })()
+            .and_then(|animation| {
+                animation.frames()?;
+                Ok(animation)
+            });
+            match imported {
+                Ok(animation) => {
+                    self.animations.push(animation);
+                    self.animation_selected = self.animations.len() - 1;
+                }
+                Err(error) => {
+                    eprintln!("{error:#}");
+                    self.tell("Không nhập được hồ sơ", true);
+                }
+            }
+        }
+    }
+
     pub(super) fn solid_color_supported(&self, mode: u8) -> bool {
         !matches!(mode, 0 | 6 | 8 | 23)
             && !(mode == 10
@@ -114,7 +246,7 @@ impl NutApp {
                                 self.changed();
                             }
                         } else if light.mode != 0 {
-                            for (rainbow, name) in [(false, "Đơn"), (true, "RGB")] {
+                            for (rainbow, name) in [(true, "RGB"), (false, "Đơn")] {
                                 let selected = if solid_color {
                                     light.rainbow == rainbow
                                 } else {

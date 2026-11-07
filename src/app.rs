@@ -61,6 +61,8 @@ impl Tab {
     }
 }
 
+type BindingResetUndo = (usize, bool, u8, Vec<(u8, Binding)>);
+
 pub struct NutApp {
     worker: Worker,
     media_input: crate::media_input::Monitor,
@@ -77,7 +79,10 @@ pub struct NutApp {
     home: bool,
     function: bool,
     selected: Option<u8>,
+    binding_reset_undo: Option<BindingResetUndo>,
     show_labels: bool,
+    login_status: crate::autostart::Status,
+    login_status_checked: Instant,
     category: usize,
     search: String,
     busy: bool,
@@ -94,6 +99,14 @@ pub struct NutApp {
     advanced_icons: [egui::TextureHandle; 4],
     appearance_open: bool,
     light_zone: u8,
+    lighting_section: u8,
+    animations: Vec<crate::animation::Animation>,
+    animation_selected: usize,
+    ai_effect: usize,
+    ai_playing: bool,
+    ai_original_light: Option<Vec<u8>>,
+    ai_last_frame: Instant,
+    ai_frame_pending: bool,
     caps_color: [u8; 3],
     color_picker: color_picker::ColorPicker,
     preview_running: bool,
@@ -170,6 +183,7 @@ impl NutApp {
                 &mut style.visuals.widgets.active,
             ] {
                 widget.corner_radius = 6.into();
+                widget.expansion = 0.;
             }
             style.spacing.button_padding = vec2(12., 8.);
             style.spacing.interact_size.y = 36.;
@@ -278,7 +292,11 @@ impl NutApp {
             home: true,
             function: false,
             selected: None,
+            binding_reset_undo: None,
             show_labels: false,
+            login_status: crate::autostart::status()
+                .unwrap_or(crate::autostart::Status::Unavailable),
+            login_status_checked: Instant::now(),
             category: 0,
             search: String::new(),
             busy: true,
@@ -292,6 +310,14 @@ impl NutApp {
             advanced_icons,
             appearance_open: false,
             light_zone: 0,
+            lighting_section: 0,
+            animations: crate::animation::presets(),
+            animation_selected: 0,
+            ai_effect: 0,
+            ai_playing: false,
+            ai_original_light: None,
+            ai_last_frame: Instant::now(),
+            ai_frame_pending: false,
             caps_color: [132, 80, 255],
             color_picker: color_picker::ColorPicker::default(),
             preview_running: true,
@@ -344,6 +370,8 @@ impl NutApp {
             Command::Disconnect => {
                 self.auto_connect = false;
                 self.connection_target = None;
+                self.ai_playing = false;
+                self.ai_original_light = None;
             }
             _ => {}
         }
@@ -420,6 +448,12 @@ impl NutApp {
                     self.busy = false;
                     self.notice = None;
                 }
+                Event::AnimationUploaded(snapshot) => {
+                    self.snapshot = Some(snapshot);
+                    self.busy = false;
+                    self.tell("Đã gửi hiệu ứng", false);
+                }
+                Event::ColorsStreamed => self.ai_frame_pending = false,
                 Event::Info(info) => {
                     if let Some(snapshot) = &mut self.snapshot {
                         snapshot.info = info;
@@ -431,6 +465,8 @@ impl NutApp {
                     self.tell("Đã ngắt kết nối", false);
                 }
                 Event::Error(error) => {
+                    self.ai_playing = false;
+                    self.ai_frame_pending = false;
                     let automatic_attempt = self.automatic_connect_attempt;
                     self.automatic_connect_attempt = false;
                     self.connection_target = None;
@@ -484,6 +520,7 @@ impl NutApp {
         if let Some(id) = self.selected
             && !self.locked(id)
         {
+            self.binding_reset_undo = None;
             let function = self.function;
             let old = self.binding(id);
             if old[0] == 11 && old != binding {
@@ -736,7 +773,13 @@ impl NutApp {
                 - vec2(
                     28.,
                     if self.tab == Tab::Lighting {
-                        if self.light_zone == 0 { 360. } else { 216. }
+                        if self.lighting_section != 0 {
+                            64.
+                        } else if self.light_zone == 0 {
+                            360.
+                        } else {
+                            216.
+                        }
                     } else {
                         64.
                     },
@@ -763,7 +806,34 @@ impl NutApp {
         if !self.solid_color_supported(light.mode) {
             light.rainbow = true;
         }
-        let custom = self.custom_colors();
+        let mut custom = self.custom_colors();
+        if self.tab == Tab::Lighting
+            && self.lighting_section == 1
+            && let Some(animation) = self.animations.get(self.animation_selected)
+            && let Ok(frames) = animation.frames()
+        {
+            let period = (f64::from(106 - animation.speed) * 0.02).max(0.04);
+            let frame = &frames[(self.preview_time / period) as usize % frames.len()];
+            custom = model::layout()
+                .into_iter()
+                .flatten()
+                .zip(frame)
+                .map(|(key, rgb)| (key.value, *rgb))
+                .collect();
+            light.mode = 128;
+        }
+        if self.tab == Tab::Lighting && self.lighting_section == 2 {
+            custom = self
+                .areas
+                .iter()
+                .zip(crate::animation::live_colors(
+                    self.ai_effect,
+                    self.preview_time,
+                ))
+                .map(|(area, rgb)| (area.id, rgb))
+                .collect();
+            light.mode = 128;
+        }
         if self.tab == Tab::Lighting || self.library.colorway != Colorway::IceBlue {
             preview::paint(
                 &p,
@@ -922,7 +992,11 @@ impl NutApp {
                 if response.clicked() {
                     clicked = Some(area.id);
                 }
-            } else if self.tab == Tab::Lighting && self.light_zone == 0 && response.clicked() {
+            } else if self.tab == Tab::Lighting
+                && self.lighting_section == 0
+                && self.light_zone == 0
+                && response.clicked()
+            {
                 if light.mode == 128 {
                     paint_key = Some(area.id);
                 }
@@ -1083,14 +1157,16 @@ impl NutApp {
         if self.tab == Tab::Lighting {
             let width = (r.width() - 56.).min(700.);
             let mut top = image_rect.bottom() + 16.;
-            if self.light_zone == 0 {
+            if self.lighting_section == 0 && self.light_zone == 0 {
                 let controls =
                     Rect::from_min_size(pos2(r.center().x - width / 2., top), vec2(width, 180.));
                 top = self.lighting_controls_stage(ui, controls) + 10.;
             }
-            let guide =
-                Rect::from_min_size(pos2(r.center().x - width / 2., top), vec2(width, 224.));
-            self.lighting_shortcut_guide(ui, guide);
+            if self.lighting_section == 0 {
+                let guide =
+                    Rect::from_min_size(pos2(r.center().x - width / 2., top), vec2(width, 224.));
+                self.lighting_shortcut_guide(ui, guide);
+            }
         }
     }
 
@@ -1145,14 +1221,16 @@ impl NutApp {
                 let scroll = &ui.spacing().scroll;
                 let gutter = scroll.bar_width + scroll.bar_inner_margin + scroll.bar_outer_margin;
                 ui.set_width((inner.width() - gutter).max(0.));
-                match self.tab {
-                    Tab::Keys => self.key_inspector(ui),
-                    Tab::Advanced => self.advanced_panel(ui),
-                    Tab::Lighting => self.light_inspector(ui),
-                    Tab::Profiles => self.profile_inspector(ui),
-                    Tab::Macros => self.macro_inspector(ui),
-                    _ => {}
-                }
+                egui::Frame::new()
+                    .inner_margin(4.)
+                    .show(ui, |ui| match self.tab {
+                        Tab::Keys => self.key_inspector(ui),
+                        Tab::Advanced => self.advanced_panel(ui),
+                        Tab::Lighting => self.light_inspector(ui),
+                        Tab::Profiles => self.profile_inspector(ui),
+                        Tab::Macros => self.macro_inspector(ui),
+                        _ => {}
+                    });
             });
     }
 
@@ -1161,46 +1239,28 @@ impl NutApp {
             return;
         };
         let roller = [13, 14, 15].contains(&id);
+        ui.label(RichText::new(self.key_name(id)).size(18.).strong());
+        ui.add_space(8.);
         ui.horizontal(|ui| {
-            ui.label(RichText::new(self.key_name(id)).size(18.).strong());
-            ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
-                if roller {
-                    for (slot, name) in [(13, "Phải"), (15, "Nhấn"), (14, "Trái")] {
-                        if ui.add(button(name, id == slot)).clicked() {
-                            self.selected = Some(slot);
-                        }
+            if roller {
+                for (slot, name) in [(14, "Trái"), (15, "Nhấn"), (13, "Phải")] {
+                    if ui.add(button(name, id == slot)).clicked() {
+                        self.selected = Some(slot);
                     }
-                } else {
-                    for (function, name) in [(true, "Fn"), (false, "Mặc định")] {
-                        if ui
-                            .add(
-                                egui::Button::new(RichText::new(tr(name)).size(13.).color(
-                                    if self.function == function {
-                                        purple()
-                                    } else {
-                                        muted()
-                                    },
-                                ))
-                                .fill(if self.function == function {
-                                    lilac()
-                                } else {
-                                    Color32::TRANSPARENT
-                                })
-                                .frame(false),
-                            )
-                            .clicked()
-                        {
-                            self.function = function;
-                            let b = self.binding(id);
-                            self.load_advanced_binding(b);
-                            if b[0] == 6 {
-                                self.macro_mode = b[2];
-                                self.macro_repeat = b[3].max(1);
-                            }
+                }
+            } else if self.tab != Tab::Advanced {
+                for (function, name) in [(false, "Mặc định"), (true, "Fn")] {
+                    if layer_choice(ui, name, self.function == function, function).clicked() {
+                        self.function = function;
+                        let b = self.binding(id);
+                        self.load_advanced_binding(b);
+                        if b[0] == 6 {
+                            self.macro_mode = b[2];
+                            self.macro_repeat = b[3].max(1);
                         }
                     }
                 }
-            });
+            }
         });
         ui.add_space(10.);
         if self.locked(id) {
@@ -1316,28 +1376,7 @@ impl NutApp {
                         }
                     }
                 });
-            ui.add_space(14.);
-            if ui
-                .add_sized(
-                    [ui.available_width(), 32.],
-                    button("Khôi phục mặc định", false),
-                )
-                .clicked()
-            {
-                self.assign(DEFAULT);
-            }
-            if self.profile().patches(self.function).contains_key(&id)
-                && ui
-                    .add(
-                        egui::Button::new(RichText::new(tr("Hoàn tác")).size(13.).color(muted()))
-                            .frame(false),
-                    )
-                    .clicked()
-            {
-                let function = self.function;
-                self.profile_mut().patches_mut(function).remove(&id);
-                self.changed();
-            }
+            self.binding_reset(ui, id);
         });
     }
 
@@ -1361,6 +1400,92 @@ impl NutApp {
     }
 
     fn light_inspector(&mut self, ui: &mut egui::Ui) {
+        let prior_section = self.lighting_section;
+        let (rail, _) = ui.allocate_exact_size(vec2(ui.available_width(), 48.), Sense::hover());
+        let segment = (rail.width() - 16.) / 3.;
+        for (id, label) in [(0, "Đèn nền"), (1, "GIF"), (2, "AI Lighting")] {
+            let rect = Rect::from_min_size(
+                rail.min + vec2(id as f32 * (segment + 8.), 0.),
+                vec2(segment, 48.),
+            );
+            let response = ui.interact(
+                rect,
+                egui::Id::new(("lighting_section", id)),
+                Sense::click(),
+            );
+            response.widget_info(|| {
+                egui::WidgetInfo::selected(
+                    egui::WidgetType::SelectableLabel,
+                    true,
+                    self.lighting_section == id,
+                    tr(label),
+                )
+            });
+            let selected = self.lighting_section == id;
+            ui.painter().rect(
+                rect,
+                6.,
+                if selected { lilac() } else { surface() },
+                Stroke::new(
+                    if selected { 1.5_f32 } else { 1. },
+                    if selected { purple() } else { line() },
+                ),
+                StrokeKind::Inside,
+            );
+            let palette = [
+                Color32::from_rgb(255, 104, 118),
+                Color32::from_rgb(255, 179, 85),
+                Color32::from_rgb(239, 218, 93),
+                Color32::from_rgb(104, 210, 156),
+                Color32::from_rgb(90, 196, 225),
+                Color32::from_rgb(166, 117, 245),
+            ];
+            for row in 0..3 {
+                for col in 0..4 {
+                    let color = match id {
+                        0 => Color32::from_rgb(255, 191, 91),
+                        1 if (row == 0 && (col == 0 || col == 3))
+                            || (row == 2 && (col == 0 || col == 3)) =>
+                        {
+                            Color32::from_rgb(255, 218, 225)
+                        }
+                        1 => Color32::from_rgb(246, 109, 140),
+                        _ => palette[(col + row) % palette.len()],
+                    };
+                    ui.painter().rect_filled(
+                        Rect::from_min_size(
+                            rect.min + vec2(9. + col as f32 * 4.5, 13. + row as f32 * 7.),
+                            vec2(3.6, 5.4),
+                        ),
+                        1.,
+                        color,
+                    );
+                }
+            }
+            text(
+                ui.painter(),
+                pos2(rect.left() + 33., rect.center().y),
+                label,
+                14.,
+                if selected { purple() } else { muted() },
+                Align2::LEFT_CENTER,
+            );
+            if response.clicked() {
+                self.lighting_section = id;
+            }
+        }
+        if prior_section == 2 && self.lighting_section != 2 {
+            self.stop_ai_lighting();
+        }
+        ui.add_space(12.);
+        if self.lighting_section == 1 {
+            self.animation_inspector(ui);
+            return;
+        }
+        if self.lighting_section == 2 {
+            self.ai_lighting_inspector(ui);
+            return;
+        }
         ui.spacing_mut().item_spacing.y = 10.;
         if self.light_zone_picker(ui) {
             return;
@@ -1691,10 +1816,24 @@ impl NutApp {
             .snapshot
             .as_ref()
             .is_some_and(|s| s.matches(self.profile()));
-        if has_edits && !applied && self.snapshot.is_some() {
+        let lighting_section = if self.tab == Tab::Lighting {
+            self.lighting_section
+        } else {
+            0
+        };
+        let show_apply = match lighting_section {
+            1 => self.animation_supported(),
+            2 => self.ai_playing || self.ai_lighting_supported(),
+            _ => has_edits && !applied && self.snapshot.is_some(),
+        };
+        if show_apply {
             let rect =
                 Rect::from_min_size(pos2(r.right() - 162., r.center().y - 18.), vec2(134., 36.));
-            let label = "Áp dụng";
+            let label = if lighting_section == 2 && self.ai_playing {
+                "Dừng"
+            } else {
+                "Áp dụng"
+            };
             let response = ui.interact(
                 rect,
                 egui::Id::new("apply_hardware"),
@@ -1721,7 +1860,19 @@ impl NutApp {
                 Align2::CENTER_CENTER,
             );
             if response.clicked() {
-                self.send(Command::Apply(self.profile().clone()));
+                match lighting_section {
+                    1 => self.send(Command::UploadAnimation(
+                        self.animations[self.animation_selected].clone(),
+                    )),
+                    2 if self.ai_playing => self.stop_ai_lighting(),
+                    2 => {
+                        self.ai_original_light = self.snapshot.as_ref().map(|s| s.light.clone());
+                        self.ai_last_frame = Instant::now() - Duration::from_millis(100);
+                        self.preview_running = true;
+                        self.ai_playing = true;
+                    }
+                    _ => self.send(Command::Apply(self.profile().clone())),
+                }
             }
         }
     }
@@ -1999,6 +2150,33 @@ impl eframe::App for NutApp {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         design::apply(ctx, &self.library);
         self.process_events();
+        if self.ai_playing {
+            if self.home || self.tab != Tab::Lighting || self.lighting_section != 2 {
+                self.stop_ai_lighting();
+            } else {
+                ctx.request_repaint_after(Duration::from_millis(100));
+                if !self.busy
+                    && !self.ai_frame_pending
+                    && self.ai_last_frame.elapsed() >= Duration::from_millis(100)
+                {
+                    self.ai_last_frame = Instant::now();
+                    if self
+                        .worker
+                        .commands
+                        .send(Command::StreamColors(crate::animation::live_colors(
+                            self.ai_effect,
+                            self.preview_time,
+                        )))
+                        .is_ok()
+                    {
+                        self.ai_frame_pending = true;
+                    } else {
+                        self.ai_playing = false;
+                        self.tell("Luồng kết nối HID đã dừng. Khởi động lại ứng dụng.", true);
+                    }
+                }
+            }
+        }
         let testing = !self.home
             && matches!(self.tab, Tab::Keys | Tab::Advanced)
             && ctx.input(|i| i.focused)
@@ -2050,7 +2228,10 @@ impl eframe::App for NutApp {
             self.preview_time += f64::from(ctx.input(|i| i.stable_dt).min(0.1));
             self.ripples
                 .retain(|pulse| self.preview_time - pulse.time < 3.);
-            if self.light_zone == 2 || !matches!(self.current_lighting().mode, 0 | 1) {
+            if self.lighting_section != 0
+                || self.light_zone == 2
+                || !matches!(self.current_lighting().mode, 0 | 1)
+            {
                 ctx.request_repaint_after(Duration::from_millis(33));
             }
         }
@@ -2479,6 +2660,65 @@ fn button(label: &str, selected: bool) -> egui::Button<'_> {
     .corner_radius(4.)
     .min_size(vec2(0., 36.))
     .truncate()
+}
+
+fn layer_choice(ui: &mut egui::Ui, label: &str, selected: bool, function: bool) -> egui::Response {
+    let (rect, response) = ui.allocate_exact_size(vec2(112., 48.), Sense::click());
+    ui.painter().rect(
+        rect,
+        6.,
+        if selected { lilac() } else { surface() },
+        Stroke::new(
+            if selected { 1.5_f32 } else { 1. },
+            if selected { purple() } else { line() },
+        ),
+        StrokeKind::Inside,
+    );
+    let symbol = Rect::from_min_size(rect.min + vec2(10., 13.), vec2(31.3, 20.7));
+    if function {
+        ui.painter().rect(
+            symbol,
+            4.,
+            Color32::from_rgb(221, 244, 249),
+            Stroke::new(1.0_f32, Color32::from_rgb(75, 170, 193)),
+            StrokeKind::Inside,
+        );
+        ui.painter().text(
+            symbol.center(),
+            Align2::CENTER_CENTER,
+            "Fn",
+            FontId::proportional(13.),
+            Color32::from_rgb(37, 119, 141),
+        );
+    } else {
+        for row in 0..3 {
+            for col in 0..6 {
+                let key = Rect::from_min_size(
+                    symbol.min + vec2(col as f32 * 5.4, row as f32 * 7.5),
+                    vec2(4.3, 5.7),
+                );
+                ui.painter().rect(
+                    key,
+                    1.,
+                    Color32::from_rgb(255, 179, 85),
+                    Stroke::new(0.5_f32, muted().gamma_multiply(0.5)),
+                    StrokeKind::Inside,
+                );
+            }
+        }
+    }
+    text(
+        ui.painter(),
+        rect.left_center() + vec2(49., 0.),
+        label,
+        14.,
+        if selected { purple() } else { muted() },
+        Align2::LEFT_CENTER,
+    );
+    response.widget_info(|| {
+        egui::WidgetInfo::selected(egui::WidgetType::SelectableLabel, true, selected, tr(label))
+    });
+    response
 }
 
 // One 24 px icon grid, a fixed 18 px visual width and a common stroke weight.

@@ -78,6 +78,90 @@ pub struct Protocol<T> {
 }
 
 impl<T: Transport> Protocol<T> {
+    /// The receiver's live-color packets may have no acknowledgement. The vendor
+    /// sends them with a 10 ms wait and zero retries rather than dropping the session.
+    pub fn stream_rgb565(&self, data: &[u8]) -> Result<()> {
+        ensure!(
+            self.report_size == 64 && data.len() == 162,
+            "Invalid live lighting frame"
+        );
+        let capacity = self.report_size - HEADER;
+        let mut incoming = [0u8; 1024];
+        for (index, chunk) in data.chunks(capacity).enumerate() {
+            let address = index * capacity;
+            let request = packet(
+                0x3c,
+                address as u16,
+                chunk.len() as u8,
+                address + chunk.len() == data.len(),
+                chunk,
+                self.report_size,
+            )?;
+            for _ in 0..32 {
+                if self.transport.read(&mut incoming, 0)? == 0 {
+                    break;
+                }
+            }
+            self.transport.write(&request)?;
+            let _ = self.transport.read(&mut incoming, 10)?;
+        }
+        Ok(())
+    }
+    /// GIF frames use the vendor's packet-index header, not the normal address header.
+    pub fn upload_animation(&self, data: &[u8], check_index: bool) -> Result<()> {
+        ensure!(
+            [32, 64].contains(&self.report_size) && !data.is_empty(),
+            "Invalid animation report"
+        );
+        let capacity = self.report_size - HEADER;
+        let count = data.len().div_ceil(capacity);
+        ensure!(count <= u16::MAX as usize, "Animation too large");
+        for (index, chunk) in data.chunks(capacity).enumerate() {
+            let mut request = vec![0; self.report_size];
+            request[0] = 0xaa;
+            request[1] = 0x42;
+            request[2..4].copy_from_slice(&(index as u16).to_be_bytes());
+            request[4..6].copy_from_slice(&(count as u16).to_be_bytes());
+            request[HEADER..HEADER + chunk.len()].copy_from_slice(chunk);
+            let mut reply = [0u8; 1024];
+            for _ in 0..32 {
+                if self.transport.read(&mut reply, 0)? == 0 {
+                    break;
+                }
+            }
+            self.transport.write(&request)?;
+            let deadline = Instant::now() + self.timeout;
+            let mut acknowledged = false;
+            while Instant::now() < deadline {
+                let remaining = deadline
+                    .saturating_duration_since(Instant::now())
+                    .as_millis()
+                    .max(1) as i32;
+                let len = self.transport.read(&mut reply, remaining)?;
+                if len == 0 {
+                    break;
+                }
+                let data = if reply[0] == 0 && len > 1 {
+                    &reply[1..len]
+                } else {
+                    &reply[..len]
+                };
+                if data.len() >= HEADER
+                    && data[0] == 0x55
+                    && data[1] == 0x42
+                    && (!check_index || u16::from_be_bytes([data[2], data[3]]) as usize == index)
+                {
+                    acknowledged = true;
+                    break;
+                }
+            }
+            ensure!(
+                acknowledged,
+                "Animation transfer not acknowledged at packet {index}"
+            );
+        }
+        Ok(())
+    }
     pub fn transfer(&self, command: u8, size: usize, data: Option<&[u8]>) -> Result<Vec<u8>> {
         self.transfer_at(command, 0, size, data, true)
     }
@@ -282,6 +366,50 @@ mod tests {
         assert_eq!(&p[..8], &[0xaa, 0x22, 8, 0xf8, 1, 0, 1, 0]);
         assert_eq!(&p[8..12], &[2, 0, 4, 0]);
         assert!(packet(SET_KEYS, 0, 25, true, &[], 32).is_err());
+    }
+
+    #[test]
+    fn animation_uses_big_endian_packet_indices_and_total() {
+        let p = Protocol {
+            transport: Mock {
+                requests: RefCell::default(),
+                pending: RefCell::default(),
+            },
+            report_size: 64,
+            timeout: Duration::from_millis(1),
+        };
+        let data = vec![0x31; 120];
+        p.upload_animation(&data, true).unwrap();
+        let requests = p.transport.requests.borrow();
+        assert_eq!(requests.len(), 3);
+        assert_eq!(&requests[0][..8], &[0xaa, 0x42, 0, 0, 0, 3, 0, 0]);
+        assert_eq!(&requests[2][..8], &[0xaa, 0x42, 0, 2, 0, 3, 0, 0]);
+        assert_eq!(&requests[2][8..16], &[0x31; 8]);
+        assert!(requests[2][16..].iter().all(|b| *b == 0));
+    }
+
+    #[test]
+    fn live_frames_send_three_packets_even_without_acknowledgements() {
+        struct NoAck(RefCell<Vec<Vec<u8>>>);
+        impl Transport for NoAck {
+            fn write(&self, data: &[u8]) -> Result<()> {
+                self.0.borrow_mut().push(data.to_vec());
+                Ok(())
+            }
+            fn read(&self, _: &mut [u8], _: i32) -> Result<usize> {
+                Ok(0)
+            }
+        }
+        let p = Protocol {
+            transport: NoAck(RefCell::default()),
+            report_size: 64,
+            timeout: Duration::from_millis(1),
+        };
+        p.stream_rgb565(&[0x55; 162]).unwrap();
+        let packets = p.transport.0.borrow();
+        assert_eq!(packets.len(), 3);
+        assert_eq!(&packets[0][..8], &[0xaa, 0x3c, 56, 0, 0, 0, 0, 0]);
+        assert_eq!(&packets[2][..8], &[0xaa, 0x3c, 50, 112, 0, 0, 1, 0]);
     }
 
     #[test]

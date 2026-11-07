@@ -65,6 +65,8 @@ pub struct DeviceInfo {
     pub work_mode: u8,
     pub profile: u8,
     pub frame_version: u8,
+    pub gif_max_frames: u16,
+    pub lighting_version: u8,
     pub manufacturer: u16,
     pub product: u16,
 }
@@ -92,6 +94,8 @@ impl DeviceInfo {
             work_mode: raw[16],
             profile: raw[19],
             frame_version: raw[30],
+            gif_max_frames: u16::from_le_bytes([raw[24], raw[25]]),
+            lighting_version: raw[31],
             manufacturer: u16::from_le_bytes([raw[12], raw[13]]),
             product: u16::from_le_bytes([raw[14], raw[15]]),
         })
@@ -290,10 +294,10 @@ impl Session {
     }
 
     fn apply(&self, profile: &Profile) -> Result<Snapshot> {
-        profile.validate()?;
+        profile.validate().context("Validate profile")?;
         // Read immediately before modifying: preserve hidden/advanced bindings and any changes
         // made on the keyboard since our previous read.
-        let current = self.snapshot()?;
+        let current = self.snapshot().context("Read keyboard before applying")?;
         ensure!(
             profile.side_lighting.is_none() || current.side.is_some(),
             "Firmware chưa trả về cấu hình đèn hai bên; chưa thể áp dụng vùng đèn này."
@@ -371,7 +375,9 @@ impl Session {
             ),
         ] {
             if *raw != patch {
-                self.protocol.transfer(set, patch.len(), Some(&patch))?;
+                self.protocol
+                    .transfer(set, patch.len(), Some(&patch))
+                    .context("Write keyboard settings or custom colors")?;
                 ensure!(
                     self.protocol.transfer(get, patch.len(), None)? == patch,
                     "Đọc lại cấu hình không khớp"
@@ -397,11 +403,28 @@ impl Session {
             }
             let merged = model::merge_patches(raw, patches)?;
             if merged != *raw {
-                self.protocol.transfer(set, 512, Some(&merged))?;
-                let readback = self.protocol.transfer(get, 512, None)?;
+                self.protocol
+                    .transfer(set, 512, Some(&merged))
+                    .context("Write key bindings")?;
+                let readback = self
+                    .protocol
+                    .transfer(get, 512, None)
+                    .context("Read key bindings after writing")?;
+                let mismatches: Vec<_> = merged
+                    .as_chunks::<4>()
+                    .0
+                    .iter()
+                    .zip(readback.as_chunks::<4>().0.iter())
+                    .enumerate()
+                    .filter(|(_, (expected, actual))| expected != actual)
+                    .map(|(index, (expected, actual))| {
+                        format!("{index}: {expected:02x?} -> {actual:02x?}")
+                    })
+                    .collect();
                 ensure!(
                     readback == merged,
-                    "Đọc lại keymap không khớp. Có thể một phần cấu hình đã thay đổi; kết nối lại để kiểm tra."
+                    "Đọc lại keymap không khớp ({get:#04x}): {}",
+                    mismatches.join(", ")
                 );
             }
         }
@@ -486,11 +509,13 @@ pub fn probe() -> Result<()> {
     let session = Session::connect(entry)?;
     let snapshot = session.snapshot()?;
     println!(
-        "NUT75: {} | firmware {} | pin {}% | HID {} byte | keymap {} byte | Fn {} byte | RGB {:?}",
+        "NUT75: {} | firmware {} | pin {}% | HID {} byte | GIF max {} frames | lighting version {} | keymap {} byte | Fn {} byte | RGB {:?}",
         snapshot.entry.name,
         snapshot.info.version,
         snapshot.info.battery,
         snapshot.report_size,
+        snapshot.info.gif_max_frames,
+        snapshot.info.lighting_version,
         snapshot.base.len(),
         snapshot.function.len(),
         snapshot.lighting()
@@ -579,12 +604,17 @@ pub enum Command {
     Disconnect,
     Refresh,
     Apply(Profile),
+    UploadAnimation(crate::animation::Animation),
+    StreamColors(Vec<[u8; 3]>),
+    StopColors(Vec<u8>),
 }
 
 pub enum Event {
     Devices(Vec<DeviceEntry>),
     Connected(Box<Snapshot>),
     Applied(Box<Snapshot>),
+    AnimationUploaded(Box<Snapshot>),
+    ColorsStreamed,
     Info(DeviceInfo),
     Disconnected,
     Error(String),
@@ -612,6 +642,10 @@ impl Worker {
                     let error_summary = match command.as_ref() {
                         Some(Command::Connect(_)) => "Không kết nối được bàn phím",
                         Some(Command::Apply(_)) => "Không áp dụng được cấu hình",
+                        Some(Command::UploadAnimation(_)) => "Không áp dụng được cấu hình",
+                        Some(Command::StreamColors(_)) | Some(Command::StopColors(_)) => {
+                            "Không áp dụng được cấu hình"
+                        }
                         Some(Command::Scan) => "Không tìm được thiết bị",
                         Some(Command::Refresh) | None => "Mất kết nối bàn phím",
                         Some(Command::Disconnect) => "Không ngắt kết nối được bàn phím",
@@ -637,6 +671,51 @@ impl Worker {
                             let connected = session.as_ref().context("Chưa kết nối NUT75")?;
                             Ok(Some(Event::Applied(Box::new(connected.apply(&profile)?))))
                         }
+                        Some(Command::UploadAnimation(animation)) => {
+                            let connected = session.as_ref().context("Chưa kết nối NUT75")?;
+                            ensure!(
+                                connected.entry.product_id == PRODUCT_RECEIVER,
+                                "USB animation interface is not verified yet"
+                            );
+                            let info = connected.info()?;
+                            let bytes = crate::animation::encode(&animation, info.gif_max_frames)?;
+                            connected
+                                .protocol
+                                .upload_animation(&bytes, info.frame_version == 1)?;
+                            Ok(Some(Event::AnimationUploaded(Box::new(
+                                connected.snapshot()?,
+                            ))))
+                        }
+                        Some(Command::StreamColors(colors)) => {
+                            let connected = session.as_ref().context("Chưa kết nối NUT75")?;
+                            ensure!(
+                                connected.entry.product_id == PRODUCT_RECEIVER
+                                    && connected.protocol.report_size == 64,
+                                "Streaming interface is not verified"
+                            );
+                            ensure!(colors.len() == 81, "Invalid streaming frame");
+                            let packed: Vec<u8> = colors
+                                .into_iter()
+                                .flat_map(|[r, g, b]| {
+                                    let color = (u16::from(r & 248) << 8)
+                                        | (u16::from(g & 252) << 3)
+                                        | u16::from(b >> 3);
+                                    color.to_be_bytes()
+                                })
+                                .collect();
+                            connected.protocol.stream_rgb565(&packed)?;
+                            Ok(Some(Event::ColorsStreamed))
+                        }
+                        Some(Command::StopColors(original)) => {
+                            let connected = session.as_ref().context("Chưa kết nối NUT75")?;
+                            ensure!(original.len() == 16, "Invalid original lighting");
+                            connected.protocol.transfer(
+                                protocol::SET_LIGHT,
+                                original.len(),
+                                Some(&original),
+                            )?;
+                            Ok(Some(Event::Connected(Box::new(connected.snapshot()?))))
+                        }
                         None => session
                             .as_ref()
                             .map(|connected| connected.info().map(|info| Some(Event::Info(info))))
@@ -649,6 +728,11 @@ impl Worker {
                         Err(error) => {
                             session = None;
                             eprintln!("{error:#}");
+                            if error_summary == "Không áp dụng được cấu hình" {
+                                let path =
+                                    crate::model::data_path().with_file_name("apply-error.log");
+                                let _ = std::fs::write(path, format!("{error:#}\n"));
+                            }
                             Some(Event::Error(error_summary.into()))
                         }
                     };

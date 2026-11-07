@@ -912,7 +912,7 @@ fn action_tool(ui: &mut egui::Ui, kind: u8, name: &str, enabled: bool) -> egui::
     response.on_hover_text(tr(name))
 }
 
-fn macro_header_tool(ui: &mut egui::Ui, more: bool) -> egui::Response {
+pub(super) fn macro_header_tool(ui: &mut egui::Ui, more: bool) -> egui::Response {
     let (r, response) = ui.allocate_exact_size(vec2(36., 36.), Sense::click());
     ui.painter().rect(
         r,
@@ -927,8 +927,8 @@ fn macro_header_tool(ui: &mut egui::Ui, more: bool) -> egui::Response {
     );
     let c = r.center();
     if more {
-        for x in [-5., 0., 5.] {
-            ui.painter().circle_filled(c + vec2(x, 0.), 1.5, ink());
+        for x in [-5.5, 0., 5.5] {
+            ui.painter().circle_filled(c + vec2(x, 0.), 1.7, ink());
         }
     } else {
         let stroke = Stroke::new(1.6_f32, ink());

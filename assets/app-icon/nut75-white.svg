@@ -1,9 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
 <title>Weikav Studio — NUT75 White</title>
-<defs><linearGradient id="tile" x2=".6" y2="1"><stop stop-color="#454950"/><stop offset="1" stop-color="#26292e"/></linearGradient>
-<linearGradient id="case" x2="0" y2="1"><stop stop-color="#fafbf9"/><stop offset="1" stop-color="#d7dcd8"/></linearGradient>
+<defs><linearGradient id="case" x2="0" y2="1"><stop stop-color="#fafbf9"/><stop offset="1" stop-color="#d7dcd8"/></linearGradient>
 <linearGradient id="wheel" x2="0" y2="1"><stop stop-color="#525c5d"/><stop offset=".45" stop-color="#d4dddd"/><stop offset=".7" stop-color="#adb9b9"/><stop offset="1" stop-color="#4e595b"/></linearGradient></defs>
-<rect x="32" y="32" width="960" height="960" rx="210" fill="url(#tile)"/>
 <g transform="translate(512 512) rotate(-18) translate(-500 -200)">
 <rect x="68" y="28" width="864" height="384" rx="18" fill="#000" opacity=".22"/>
 <rect x="76" y="24" width="848" height="370" rx="12" fill="#a5aca8"/>

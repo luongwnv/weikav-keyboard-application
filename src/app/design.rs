@@ -101,6 +101,7 @@ pub(super) fn apply(ctx: &egui::Context, lib: &Library) {
         ] {
             widget.corner_radius = 4.into();
             widget.bg_stroke = Stroke::new(1.0_f32, line());
+            widget.expansion = 0.;
         }
         visuals.widgets.inactive.bg_fill = shade(229);
         visuals.widgets.inactive.weak_bg_fill = surface();
@@ -511,6 +512,39 @@ const TRANSLATIONS: &[(&str, &str)] = &[
     ("Đổi chức năng con lăn", "Switch roller function"),
     ("Chức năng từ thiết bị", "Device function"),
     ("Không nhập được hồ sơ", "Could not import the profile"),
+    ("Dừng", "Stop"),
+    ("Đặt lại phím nâng cao", "Reset advanced keys"),
+    (
+        "Chỉ áp dụng cho lớp đang chọn",
+        "Only applies to the selected layer",
+    ),
+    ("Ẩn", "Hide"),
+    ("Hiện", "Show"),
+    ("Chạy khi đăng nhập", "Launch at login"),
+    (
+        "Không thay đổi được cài đặt khởi động",
+        "Could not change the login setting",
+    ),
+    (
+        "Cho phép ứng dụng trong cài đặt đăng nhập của hệ thống.",
+        "Allow the app in the system login settings.",
+    ),
+    ("Cầu vồng", "Rainbow"),
+    ("Pháo hoa", "Fireworks"),
+    ("Trái tim", "Heart"),
+    ("Băng hà", "Glacier"),
+    ("Mùa xuân", "Spring"),
+    ("Ngọc bích", "Jade"),
+    ("Trắng", "White"),
+    ("Mận", "Plum"),
+    ("Cam", "Orange"),
+    ("Nhập JSON", "Import JSON"),
+    ("Đã gửi hiệu ứng", "Effect sent"),
+    ("Chạy khi ứng dụng đang mở", "Runs while the app is open"),
+    (
+        "Cần kết nối 2.4 GHz hỗ trợ",
+        "A supported 2.4 GHz connection is required",
+    ),
     ("Không xuất được hồ sơ", "Could not export the profile"),
     (
         "Không kết nối được bàn phím",
@@ -537,6 +571,7 @@ const TRANSLATIONS: &[(&str, &str)] = &[
     ("Đang tìm thiết bị…", "Finding devices…"),
     ("Khôi phục mặc định", "Restore default"),
     ("Trễ trước thao tác", "Delay before action"),
+    ("Độ trễ", "Delay"),
     ("Chức năng bàn phím", "Keyboard function"),
     ("Chưa kết nối NUT75", "NUT75 is not connected"),
     ("HID report quá lớn", "The HID report is too large"),
