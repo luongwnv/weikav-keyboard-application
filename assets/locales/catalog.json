@@ -1,0 +1,2730 @@
+{
+  "Remove device": [
+    "移除设备",
+    "デバイスを削除",
+    "기기 제거",
+    "Retirer l’appareil",
+    "Gerät entfernen",
+    "Quitar dispositivo"
+  ],
+  "Connection and response": [
+    "连接与响应",
+    "接続と応答",
+    "연결 및 응답",
+    "Connexion et réponse",
+    "Verbindung und Reaktion",
+    "Conexión y respuesta"
+  ],
+  "Key behavior": [
+    "按键行为",
+    "キーの動作",
+    "키 동작",
+    "Comportement des touches",
+    "Tastenverhalten",
+    "Comportamiento de teclas"
+  ],
+  "This effect uses automatic RGB colors.": [
+    "此效果自动使用 RGB 颜色。",
+    "この効果は自動でRGBカラーを使用します。",
+    "이 효과는 자동 RGB 색상을 사용합니다.",
+    "Cet effet utilise des couleurs RGB automatiques.",
+    "Dieser Effekt verwendet automatische RGB-Farben.",
+    "Este efecto usa colores RGB automáticos."
+  ],
+  "ADVANCED": [
+    "高级",
+    "詳細設定",
+    "고급",
+    "AVANCÉ",
+    "ERWEITERT",
+    "AVANZADO"
+  ],
+  "Advanced Keys": [
+    "高级按键",
+    "高度なキー設定",
+    "고급 키",
+    "Touches avancées",
+    "Erweiterte Tasten",
+    "Teclas avanzadas"
+  ],
+  "Current bindings": [
+    "当前绑定",
+    "現在の割り当て",
+    "현재 할당",
+    "Affectations actuelles",
+    "Aktuelle Belegungen",
+    "Asignaciones actuales"
+  ],
+  "Select a key on the keyboard to assign an action.": [
+    "选择键盘上的按键以分配功能。",
+    "キーボード上のキーを選んで機能を割り当てます。",
+    "키보드에서 키를 선택하여 동작을 할당하세요.",
+    "Sélectionnez une touche pour lui affecter une action.",
+    "Wähle eine Taste aus, um eine Aktion zuzuweisen.",
+    "Selecciona una tecla para asignarle una acción."
+  ],
+  "Tap for one action, hold for another.": [
+    "轻按和长按分别执行不同功能。",
+    "タップと長押しに別の機能を設定します。",
+    "탭과 길게 누르기에 서로 다른 동작을 할당합니다.",
+    "Affectez une action à l’appui bref et une autre à l’appui long.",
+    "Weise kurzem Drücken und Halten verschiedene Aktionen zu.",
+    "Asigna acciones distintas al toque y a la pulsación larga."
+  ],
+  "Press to toggle holding a key.": [
+    "按下以切换持续按键状态。",
+    "押すたびにキーの保持を切り替えます。",
+    "눌러서 키 유지 상태를 전환합니다.",
+    "Appuyez pour activer ou désactiver le maintien d’une touche.",
+    "Drücke zum Ein- oder Ausschalten einer gehaltenen Taste.",
+    "Pulsa para activar o desactivar una tecla mantenida."
+  ],
+  "Choose the priority between two opposing keys.": [
+    "选择两个相反按键的优先级。",
+    "反対方向の2つのキーの優先順位を選びます。",
+    "반대 방향 키 두 개의 우선순위를 선택합니다.",
+    "Choisissez la priorité entre deux touches opposées.",
+    "Wähle die Priorität zwischen zwei entgegengesetzten Tasten.",
+    "Elige la prioridad entre dos teclas opuestas."
+  ],
+  "Assign a key with modifier keys.": [
+    "将按键与修饰键组合。",
+    "キーに修飾キーを組み合わせます。",
+    "키에 보조 키를 조합합니다.",
+    "Combinez une touche avec des modificateurs.",
+    "Kombiniere eine Taste mit Modifikatortasten.",
+    "Combina una tecla con modificadores."
+  ],
+  "Delete": [
+    "删除",
+    "削除",
+    "삭제",
+    "Supprimer",
+    "Löschen",
+    "Eliminar"
+  ],
+  "Move up": [
+    "上移",
+    "上に移動",
+    "위로 이동",
+    "Monter",
+    "Nach oben",
+    "Subir"
+  ],
+  "Move down": [
+    "下移",
+    "下に移動",
+    "아래로 이동",
+    "Descendre",
+    "Nach unten",
+    "Bajar"
+  ],
+  "Cross weave on this firmware runs in RGB colors.": [
+    "此固件的交织效果仅使用 RGB 颜色。",
+    "このファームウェアの交差効果はRGBカラーのみです。",
+    "이 펌웨어의 교차 효과는 RGB 색상만 사용합니다.",
+    "Sur ce firmware, l’effet entrecroisé utilise uniquement les couleurs RGB.",
+    "Der Kreuzweben-Effekt dieser Firmware verwendet nur RGB-Farben.",
+    "En este firmware, el efecto entretejido solo usa colores RGB."
+  ],
+  "Could not open NUT75. Close the web driver and reconnect. On macOS, check Input Monitoring permissions if prompted.": [
+    "无法打开 NUT75。请关闭网页驱动并重新连接。如 macOS 提示，请检查输入监控权限。",
+    "NUT75を開けません。Webドライバーを閉じて再接続してください。macOSで求められた場合は入力監視の権限を確認してください。",
+    "NUT75를 열 수 없습니다. 웹 드라이버를 닫고 다시 연결하세요. macOS에서 요청하면 입력 모니터링 권한을 확인하세요.",
+    "Impossible d’ouvrir NUT75. Fermez le pilote web et reconnectez-le. Si macOS le demande, vérifiez l’autorisation de surveillance des entrées.",
+    "NUT75 konnte nicht geöffnet werden. Schließe den Webtreiber und verbinde erneut. Prüfe bei einer macOS-Abfrage die Berechtigung zur Eingabeüberwachung.",
+    "No se pudo abrir NUT75. Cierra el controlador web y vuelve a conectar. Si macOS lo solicita, revisa el permiso de monitorización de entrada."
+  ],
+  "Keymap verification failed. Some settings may have changed. Reconnect to check the keyboard.": [
+    "键位验证失败。部分设置可能已更改。请重新连接以检查键盘。",
+    "キーマップの確認に失敗しました。一部の設定が変更された可能性があります。再接続して確認してください。",
+    "키맵 확인에 실패했습니다. 일부 설정이 변경되었을 수 있습니다. 다시 연결하여 확인하세요.",
+    "Échec de vérification des touches. Certains réglages ont pu changer. Reconnectez le clavier pour vérifier.",
+    "Tastenbelegung konnte nicht überprüft werden. Einige Einstellungen könnten geändert sein. Verbinde die Tastatur erneut zur Prüfung.",
+    "Falló la verificación del mapa de teclas. Algunos ajustes pueden haber cambiado. Vuelve a conectar el teclado para comprobarlo."
+  ],
+  "The firmware has not returned side-light settings. This zone cannot be applied yet.": [
+    "固件尚未返回侧灯设置。暂时无法应用此区域。",
+    "ファームウェアからサイドライト設定が返されていません。この領域はまだ適用できません。",
+    "펌웨어가 측면 조명 설정을 반환하지 않았습니다. 이 영역은 아직 적용할 수 없습니다.",
+    "Le firmware n’a pas renvoyé les réglages latéraux. Cette zone ne peut pas encore être appliquée.",
+    "Die Firmware hat keine Seitenlichteinstellungen geliefert. Dieser Bereich kann noch nicht angewendet werden.",
+    "El firmware no ha devuelto los ajustes laterales. Esta zona aún no se puede aplicar."
+  ],
+  "This device has not been verified as NUT75. Connect with a USB cable.": [
+    "此设备尚未验证为 NUT75。请使用 USB 线连接。",
+    "このデバイスはNUT75として確認されていません。USBケーブルで接続してください。",
+    "이 기기가 NUT75인지 확인되지 않았습니다. USB 케이블로 연결하세요.",
+    "Cet appareil n’est pas encore identifié comme NUT75. Connectez-le par USB.",
+    "Dieses Gerät wurde noch nicht als NUT75 bestätigt. Verbinde es per USB-Kabel.",
+    "Este dispositivo aún no se ha verificado como NUT75. Conéctalo con un cable USB."
+  ],
+  "The indicator is managed by firmware; color control is not verified.": [
+    "指示灯由固件管理，尚未验证颜色控制功能。",
+    "インジケーターはファームウェアが管理しており、色の制御は未確認です。",
+    "표시등은 펌웨어가 관리하며 색상 제어는 확인되지 않았습니다.",
+    "Le voyant est géré par le firmware ; le réglage des couleurs n’est pas vérifié.",
+    "Die Anzeige wird von der Firmware gesteuert; die Farbsteuerung ist nicht bestätigt.",
+    "El firmware gestiona el indicador; el control de color no está verificado."
+  ],
+  "A custom color switches the whole keyboard to Per-key lighting.": [
+    "设置自定义颜色会将整个键盘切换为逐键灯光模式。",
+    "カスタムカラーを設定すると、キーボード全体がキー別照明に切り替わります。",
+    "사용자 색상을 설정하면 키보드 전체가 개별 키 조명으로 전환됩니다.",
+    "Une couleur personnalisée active l’éclairage par touche pour tout le clavier.",
+    "Eine benutzerdefinierte Farbe schaltet die gesamte Tastatur auf Einzeltastenbeleuchtung um.",
+    "Un color personalizado cambia todo el teclado a iluminación por tecla."
+  ],
+  "The firmware is in recovery mode. Configuration is unavailable.": [
+    "固件处于恢复模式，无法配置。",
+    "ファームウェアは復旧モードです。設定できません。",
+    "펌웨어가 복구 모드입니다. 설정할 수 없습니다.",
+    "Le firmware est en mode récupération. La configuration est indisponible.",
+    "Die Firmware ist im Wiederherstellungsmodus. Eine Konfiguration ist nicht möglich.",
+    "El firmware está en modo de recuperación. No se puede configurar."
+  ],
+  "NUT75 was not found. Connect USB-C and select USB mode.": [
+    "未找到 NUT75。请连接 USB-C 并选择 USB 模式。",
+    "NUT75が見つかりません。USB-Cで接続し、USBモードを選んでください。",
+    "NUT75를 찾을 수 없습니다. USB-C를 연결하고 USB 모드를 선택하세요.",
+    "NUT75 introuvable. Connectez le câble USB-C et sélectionnez le mode USB.",
+    "NUT75 wurde nicht gefunden. Verbinde USB-C und wähle den USB-Modus.",
+    "No se encontró NUT75. Conecta USB-C y selecciona el modo USB."
+  ],
+  "The device has no 32/64-byte output report with ID 0": [
+    "设备没有 ID 为 0 的 32/64 字节输出报告",
+    "デバイスにID 0の32/64バイト出力レポートがありません",
+    "기기에 ID 0인 32/64바이트 출력 보고서가 없습니다",
+    "L’appareil n’a pas de rapport de sortie de 32/64 octets avec l’ID 0",
+    "Das Gerät hat keinen 32/64-Byte-Ausgabebericht mit ID 0",
+    "El dispositivo no tiene informe de salida de 32/64 bytes con ID 0"
+  ],
+  "The HID connection stopped. Restart the app.": [
+    "HID 连接已停止，请重启应用。",
+    "HID接続が停止しました。アプリを再起動してください。",
+    "HID 연결이 중지되었습니다. 앱을 다시 시작하세요.",
+    "La connexion HID s’est arrêtée. Redémarrez l’application.",
+    "Die HID-Verbindung wurde beendet. Starte die App neu.",
+    "La conexión HID se ha detenido. Reinicia la aplicación."
+  ],
+  "This firmware has not returned a usable side-light configuration.": [
+    "此固件尚未返回可用的侧灯配置。",
+    "このファームウェアから使用可能なサイドライト設定が返されていません。",
+    "이 펌웨어는 사용할 수 있는 측면 조명 설정을 반환하지 않았습니다.",
+    "Ce firmware n’a pas renvoyé de configuration latérale utilisable.",
+    "Diese Firmware hat keine verwendbare Seitenlichtkonfiguration geliefert.",
+    "Este firmware no ha devuelto una configuración lateral válida."
+  ],
+  "Side-light control is not supported on this firmware yet.": [
+    "此固件暂不支持侧灯控制。",
+    "このファームウェアのサイドライト制御にはまだ対応していません。",
+    "이 펌웨어의 측면 조명 제어는 아직 지원되지 않습니다.",
+    "Ce firmware ne permet pas encore de régler les lumières latérales.",
+    "Die Seitenlichtsteuerung wird von dieser Firmware noch nicht unterstützt.",
+    "Este firmware aún no admite el control de las luces laterales."
+  ],
+  "If the lights do not change, further checks need USB-C.": [
+    "如果灯光没有变化，需要通过 USB-C 进一步检查。",
+    "照明が変わらない場合は、USB-Cで追加確認が必要です。",
+    "조명이 바뀌지 않으면 USB-C로 추가 확인해야 합니다.",
+    "Si l’éclairage ne change pas, les vérifications suivantes nécessitent USB-C.",
+    "Wenn sich die Beleuchtung nicht ändert, sind weitere Prüfungen per USB-C nötig.",
+    "Si las luces no cambian, las siguientes comprobaciones requieren USB-C."
+  ],
+  "Lighting verification failed. Reconnect to check the keyboard.": [
+    "灯光验证失败。请重新连接以检查键盘。",
+    "照明の確認に失敗しました。再接続してキーボードを確認してください。",
+    "조명 확인에 실패했습니다. 다시 연결하여 키보드를 확인하세요.",
+    "Échec de vérification de l’éclairage. Reconnectez le clavier pour vérifier.",
+    "Die Beleuchtung konnte nicht überprüft werden. Verbinde die Tastatur erneut zur Prüfung.",
+    "Falló la verificación de iluminación. Vuelve a conectar el teclado para comprobarlo."
+  ],
+  "Connect your NUT75 using USB-C or its 2.4 GHz receiver.": [
+    "请通过 USB-C 或 2.4 GHz 接收器连接 NUT75。",
+    "USB-Cまたは2.4 GHzレシーバーでNUT75を接続してください。",
+    "USB-C 또는 2.4 GHz 수신기로 NUT75를 연결하세요.",
+    "Connectez votre NUT75 par USB-C ou avec son récepteur 2,4 GHz.",
+    "Verbinde dein NUT75 per USB-C oder über den 2,4-GHz-Empfänger.",
+    "Conecta tu NUT75 por USB-C o con su receptor de 2,4 GHz."
+  ],
+  "The original file has been kept. Export a new profile to save.": [
+    "原文件已保留。请导出新配置以保存。",
+    "元のファイルは保持されています。保存するには新しいプロファイルをエクスポートしてください。",
+    "원본 파일은 유지되었습니다. 새 프로필을 내보내 저장하세요.",
+    "Le fichier d’origine est conservé. Exportez un nouveau profil pour enregistrer.",
+    "Die Originaldatei wurde beibehalten. Exportiere zum Speichern ein neues Profil.",
+    "Se ha conservado el archivo original. Exporta un perfil nuevo para guardar."
+  ],
+  "Connect USB or wake your keyboard.": [
+    "请连接 USB 或唤醒键盘。",
+    "USBを接続するか、キーボードをスリープ解除してください。",
+    "USB를 연결하거나 키보드를 깨우세요.",
+    "Connectez le câble USB ou réveillez le clavier.",
+    "Verbinde USB oder wecke die Tastatur auf.",
+    "Conecta USB o activa el teclado."
+  ],
+  "Choose two different, editable keys": [
+    "请选择两个不同且可编辑的按键",
+    "編集可能な異なる2つのキーを選んでください",
+    "서로 다른 편집 가능한 키 두 개를 선택하세요",
+    "Choisissez deux touches différentes et modifiables",
+    "Wähle zwei unterschiedliche, bearbeitbare Tasten",
+    "Elige dos teclas distintas que se puedan editar"
+  ],
+  "Brightness and speed must be between 1 and 6.": [
+    "亮度和速度必须在 1 到 6 之间。",
+    "明るさと速度は1〜6の範囲で設定してください。",
+    "밝기와 속도는 1~6이어야 합니다.",
+    "La luminosité et la vitesse doivent être comprises entre 1 et 6.",
+    "Helligkeit und Geschwindigkeit müssen zwischen 1 und 6 liegen.",
+    "El brillo y la velocidad deben estar entre 1 y 6."
+  ],
+  "Configure using USB-C or the 2.4 GHz receiver.": [
+    "通过 USB-C 或 2.4 GHz 接收器配置。",
+    "USB-Cまたは2.4 GHzレシーバーで設定します。",
+    "USB-C 또는 2.4 GHz 수신기로 설정하세요.",
+    "Configurez avec USB-C ou le récepteur 2,4 GHz.",
+    "Konfiguriere per USB-C oder über den 2,4-GHz-Empfänger.",
+    "Configura por USB-C o con el receptor de 2,4 GHz."
+  ],
+  "This key is fixed by the firmware.": [
+    "此按键由固件固定。",
+    "このキーはファームウェアで固定されています。",
+    "이 키는 펌웨어에서 고정되어 있습니다.",
+    "Cette touche est fixée par le firmware.",
+    "Diese Taste ist durch die Firmware festgelegt.",
+    "Esta tecla está fijada por el firmware."
+  ],
+  "Unsupported HID report size": [
+    "不支持的 HID 报告大小",
+    "未対応のHIDレポートサイズ",
+    "지원하지 않는 HID 보고서 크기",
+    "Taille de rapport HID non prise en charge",
+    "Nicht unterstützte HID-Berichtsgröße",
+    "Tamaño de informe HID no admitido"
+  ],
+  "Connect to check side-light support.": [
+    "请连接设备以检查侧灯支持情况。",
+    "接続してサイドライトの対応状況を確認してください。",
+    "연결하여 측면 조명 지원 여부를 확인하세요.",
+    "Connectez l’appareil pour vérifier la prise en charge des lumières latérales.",
+    "Verbinde das Gerät, um die Seitenlichtunterstützung zu prüfen.",
+    "Conecta para comprobar la compatibilidad de las luces laterales."
+  ],
+  "Side-light settings are outside the NUT75 range": [
+    "侧灯设置超出 NUT75 范围",
+    "サイドライト設定がNUT75の範囲外です",
+    "측면 조명 설정이 NUT75 범위를 벗어났습니다",
+    "Les réglages latéraux sont hors de la plage NUT75",
+    "Seitenlichteinstellungen außerhalb des NUT75-Bereichs",
+    "Los ajustes laterales están fuera del rango de NUT75"
+  ],
+  "Indicator color control is not supported in this app yet.": [
+    "应用暂不支持更改指示灯颜色。",
+    "アプリでのインジケーター色の変更にはまだ対応していません。",
+    "앱에서 표시등 색상 변경은 아직 지원되지 않습니다.",
+    "L’application ne permet pas encore de changer la couleur du voyant.",
+    "Die App unterstützt die Farbeinstellung der Anzeige noch nicht.",
+    "La aplicación aún no permite cambiar el color del indicador."
+  ],
+  "Invalid transfer size": [
+    "无效的传输大小",
+    "無効な転送サイズ",
+    "잘못된 전송 크기",
+    "Taille de transfert invalide",
+    "Ungültige Übertragungsgröße",
+    "Tamaño de transferencia no válido"
+  ],
+  "This profile is not for WEIKAV NUT75.": [
+    "此配置不适用于 WEIKAV NUT75。",
+    "このプロファイルはWEIKAV NUT75用ではありません。",
+    "이 프로필은 WEIKAV NUT75용이 아닙니다.",
+    "Ce profil n’est pas destiné au WEIKAV NUT75.",
+    "Dieses Profil ist nicht für WEIKAV NUT75 bestimmt.",
+    "Este perfil no es para WEIKAV NUT75."
+  ],
+  "NUT75 macro memory exceeds 512 bytes": [
+    "NUT75 宏内存超过 512 字节",
+    "NUT75のマクロメモリが512バイトを超えています",
+    "NUT75 매크로 메모리가 512바이트를 초과합니다",
+    "La mémoire des macros NUT75 dépasse 512 octets",
+    "Der NUT75-Makrospeicher überschreitet 512 Byte",
+    "La memoria de macros NUT75 supera los 512 bytes"
+  ],
+  "Keyboard settings are outside the NUT75 range": [
+    "键盘设置超出 NUT75 范围",
+    "キーボード設定がNUT75の範囲外です",
+    "키보드 설정이 NUT75 범위를 벗어났습니다",
+    "Les réglages du clavier sont hors de la plage NUT75",
+    "Tastatureinstellungen außerhalb des NUT75-Bereichs",
+    "Los ajustes del teclado están fuera del rango de NUT75"
+  ],
+  "Could not open NUT75 Consumer Control": [
+    "无法打开 NUT75 消费者控制接口",
+    "NUT75のコンシューマー制御を開けません",
+    "NUT75 소비자 제어 인터페이스를 열 수 없습니다",
+    "Impossible d’ouvrir le contrôle multimédia NUT75",
+    "NUT75 Consumer Control konnte nicht geöffnet werden",
+    "No se pudo abrir el control multimedia NUT75"
+  ],
+  "Check the USB cable and close the web driver.": [
+    "请检查 USB 线并关闭网页驱动。",
+    "USBケーブルを確認し、Webドライバーを閉じてください。",
+    "USB 케이블을 확인하고 웹 드라이버를 닫으세요.",
+    "Vérifiez le câble USB et fermez le pilote web.",
+    "Prüfe das USB-Kabel und schließe den Webtreiber.",
+    "Comprueba el cable USB y cierra el controlador web."
+  ],
+  "Unsupported profile version.": [
+    "不支持的配置版本。",
+    "未対応のプロファイルバージョンです。",
+    "지원하지 않는 프로필 버전입니다.",
+    "Version de profil non prise en charge.",
+    "Nicht unterstützte Profilversion.",
+    "Versión de perfil no admitida."
+  ],
+  "You can export the profile to a JSON file.": [
+    "您可以将配置导出为 JSON 文件。",
+    "プロファイルをJSONファイルにエクスポートできます。",
+    "프로필을 JSON 파일로 내보낼 수 있습니다.",
+    "Vous pouvez exporter le profil dans un fichier JSON.",
+    "Du kannst das Profil als JSON-Datei exportieren.",
+    "Puedes exportar el perfil a un archivo JSON."
+  ],
+  "Device information must contain 48 bytes": [
+    "设备信息必须包含 48 字节",
+    "デバイス情報は48バイトである必要があります",
+    "기기 정보는 48바이트여야 합니다",
+    "Les informations de l’appareil doivent contenir 48 octets",
+    "Die Geräteinformationen müssen 48 Byte enthalten",
+    "La información del dispositivo debe contener 48 bytes"
+  ],
+  "The macro address is outside NUT75 memory": [
+    "宏地址超出 NUT75 内存范围",
+    "マクロのアドレスがNUT75メモリの範囲外です",
+    "매크로 주소가 NUT75 메모리 범위를 벗어났습니다",
+    "L’adresse de la macro est hors de la mémoire NUT75",
+    "Die Makroadresse liegt außerhalb des NUT75-Speichers",
+    "La dirección de la macro está fuera de la memoria NUT75"
+  ],
+  "Unsupported macro action type": [
+    "不支持的宏操作类型",
+    "未対応のマクロ操作です",
+    "지원하지 않는 매크로 동작 유형입니다",
+    "Type d’action de macro non pris en charge",
+    "Nicht unterstützter Makroaktionstyp",
+    "Tipo de acción de macro no admitido"
+  ],
+  "Profile names must contain 1 to 60 characters.": [
+    "配置名称必须为 1 到 60 个字符。",
+    "プロファイル名は1〜60文字で入力してください。",
+    "프로필 이름은 1~60자여야 합니다.",
+    "Le nom du profil doit contenir de 1 à 60 caractères.",
+    "Profilnamen müssen 1 bis 60 Zeichen enthalten.",
+    "Los nombres de perfil deben tener entre 1 y 60 caracteres."
+  ],
+  "Unsupported key binding": [
+    "不支持的按键绑定",
+    "未対応のキー割り当て",
+    "지원하지 않는 키 할당",
+    "Affectation de touche non prise en charge",
+    "Nicht unterstützte Tastenbelegung",
+    "Asignación de tecla no admitida"
+  ],
+  "The device returned an unexpected WEIKAV vendor ID": [
+    "设备返回了异常的 WEIKAV 厂商 ID",
+    "デバイスから想定外のWEIKAVベンダーIDが返されました",
+    "기기가 예상과 다른 WEIKAV 공급업체 ID를 반환했습니다",
+    "L’appareil a renvoyé un identifiant de fabricant WEIKAV inattendu",
+    "Das Gerät meldete eine unerwartete WEIKAV-Hersteller-ID",
+    "El dispositivo devolvió un ID de fabricante WEIKAV inesperado"
+  ],
+  "HID long items are unsupported": [
+    "不支持 HID 长项目",
+    "HIDロングアイテムには対応していません",
+    "긴 HID 항목은 지원하지 않습니다",
+    "Les éléments HID longs ne sont pas pris en charge",
+    "Lange HID-Elemente werden nicht unterstützt",
+    "No se admiten elementos HID largos"
+  ],
+  "Unsupported RGB effect.": [
+    "不支持的 RGB 效果。",
+    "未対応のRGB効果です。",
+    "지원하지 않는 RGB 효과입니다.",
+    "Effet RGB non pris en charge.",
+    "Nicht unterstützter RGB-Effekt.",
+    "Efecto RGB no admitido."
+  ],
+  "The configuration directory could not be found": [
+    "找不到配置目录",
+    "設定ディレクトリが見つかりません",
+    "설정 폴더를 찾을 수 없습니다",
+    "Dossier de configuration introuvable",
+    "Das Konfigurationsverzeichnis wurde nicht gefunden",
+    "No se encontró la carpeta de configuración"
+  ],
+  "The device returned an unexpected NUT75 product ID": [
+    "设备返回了异常的 NUT75 产品 ID",
+    "デバイスから想定外のNUT75製品IDが返されました",
+    "기기가 예상과 다른 NUT75 제품 ID를 반환했습니다",
+    "L’appareil a renvoyé un identifiant de produit NUT75 inattendu",
+    "Das Gerät meldete eine unerwartete NUT75-Produkt-ID",
+    "El dispositivo devolvió un ID de producto NUT75 inesperado"
+  ],
+  "Side-light verification failed": [
+    "侧灯验证失败",
+    "サイドライトの確認に失敗しました",
+    "측면 조명 확인 실패",
+    "Échec de vérification des lumières latérales",
+    "Seitenlichtprüfung fehlgeschlagen",
+    "Falló la verificación de luces laterales"
+  ],
+  "Invalid HID global stack": [
+    "无效的 HID 全局堆栈",
+    "無効なHIDグローバルスタック",
+    "잘못된 HID 전역 스택",
+    "Pile globale HID invalide",
+    "Ungültiger globaler HID-Stapel",
+    "Pila global HID no válida"
+  ],
+  "Could not save the profile library": [
+    "无法保存配置库",
+    "プロファイルライブラリを保存できません",
+    "프로필 라이브러리를 저장할 수 없습니다",
+    "Impossible d’enregistrer la bibliothèque de profils",
+    "Die Profilbibliothek konnte nicht gespeichert werden",
+    "No se pudo guardar la biblioteca de perfiles"
+  ],
+  "The key position is outside the keymap.": [
+    "按键位置超出键位范围。",
+    "キー位置がキーマップの範囲外です。",
+    "키 위치가 키맵 범위를 벗어났습니다.",
+    "La position de la touche est hors du plan des touches.",
+    "Die Tastenposition liegt außerhalb der Tastenbelegung.",
+    "La posición de la tecla está fuera del mapa."
+  ],
+  "No NUT75 roller interface was found": [
+    "找不到 NUT75 旋钮接口",
+    "NUT75のノブインターフェースが見つかりません",
+    "NUT75 노브 인터페이스를 찾을 수 없습니다",
+    "Aucune interface de molette NUT75 trouvée",
+    "Keine NUT75-Drehregler-Schnittstelle gefunden",
+    "No se encontró la interfaz de rueda NUT75"
+  ],
+  "Choose a color, then click keys to paint.": [
+    "选择颜色，然后点击按键进行着色。",
+    "色を選び、キーをクリックして塗ります。",
+    "색상을 선택한 후 키를 클릭하여 칠하세요.",
+    "Choisissez une couleur, puis cliquez sur les touches à colorer.",
+    "Wähle eine Farbe und klicke auf die zu färbenden Tasten.",
+    "Elige un color y haz clic en las teclas para pintarlas."
+  ],
+  "Your local profile has been kept.": [
+    "本地配置已保留。",
+    "ローカルプロファイルは保持されています。",
+    "로컬 프로필은 유지되었습니다.",
+    "Votre profil local est conservé.",
+    "Dein lokales Profil wurde beibehalten.",
+    "Se ha conservado tu perfil local."
+  ],
+  "The keymap must contain exactly 512 bytes.": [
+    "键位数据必须恰好为 512 字节。",
+    "キーマップは正確に512バイトである必要があります。",
+    "키맵은 정확히 512바이트여야 합니다.",
+    "Le plan des touches doit contenir exactement 512 octets.",
+    "Die Tastenbelegung muss genau 512 Byte enthalten.",
+    "El mapa de teclas debe contener exactamente 512 bytes."
+  ],
+  "Invalid profile library.": [
+    "无效的配置库。",
+    "無効なプロファイルライブラリです。",
+    "잘못된 프로필 라이브러리입니다.",
+    "Bibliothèque de profils invalide.",
+    "Ungültige Profilbibliothek.",
+    "Biblioteca de perfiles no válida."
+  ],
+  "Show key assignments": [
+    "显示按键分配",
+    "キーの割り当てを表示",
+    "키 할당 표시",
+    "Afficher les affectations",
+    "Tastenbelegungen anzeigen",
+    "Mostrar asignaciones"
+  ],
+  "The macro has too many actions": [
+    "宏操作过多",
+    "マクロの操作数が多すぎます",
+    "매크로 동작이 너무 많습니다",
+    "La macro contient trop d’actions",
+    "Das Makro enthält zu viele Aktionen",
+    "La macro tiene demasiadas acciones"
+  ],
+  "Settings verification failed": [
+    "设置验证失败",
+    "設定の確認に失敗しました",
+    "설정 확인 실패",
+    "Échec de vérification des réglages",
+    "Einstellungsprüfung fehlgeschlagen",
+    "Falló la verificación de ajustes"
+  ],
+  "Invalid profile JSON": [
+    "无效的配置 JSON",
+    "無効なプロファイルJSON",
+    "잘못된 프로필 JSON",
+    "JSON de profil invalide",
+    "Ungültiges Profil-JSON",
+    "JSON de perfil no válido"
+  ],
+  "The keyboard did not respond to command": [
+    "键盘未响应命令",
+    "キーボードがコマンドに応答しませんでした",
+    "키보드가 명령에 응답하지 않았습니다",
+    "Le clavier n’a pas répondu à la commande",
+    "Die Tastatur hat nicht auf den Befehl geantwortet",
+    "El teclado no respondió al comando"
+  ],
+  "Invalid macro header": [
+    "无效的宏头部",
+    "無効なマクロヘッダー",
+    "잘못된 매크로 헤더",
+    "En-tête de macro invalide",
+    "Ungültiger Makrokopf",
+    "Cabecera de macro no válida"
+  ],
+  "The HID descriptor is truncated": [
+    "HID 描述符不完整",
+    "HID記述子が途中で切れています",
+    "HID 설명자가 잘렸습니다",
+    "Le descripteur HID est tronqué",
+    "Der HID-Deskriptor ist abgeschnitten",
+    "El descriptor HID está truncado"
+  ],
+  "SOCD - Opposing keys": [
+    "SOCD - 相反按键",
+    "SOCD - 反対方向キー",
+    "SOCD - 반대 방향 키",
+    "SOCD - Touches opposées",
+    "SOCD - Gegentasten",
+    "SOCD - Teclas opuestas"
+  ],
+  "The library already contains 100 profiles.": [
+    "配置库已包含 100 个配置。",
+    "ライブラリにはすでに100個のプロファイルがあります。",
+    "라이브러리에 이미 프로필 100개가 있습니다.",
+    "La bibliothèque contient déjà 100 profils.",
+    "Die Bibliothek enthält bereits 100 Profile.",
+    "La biblioteca ya contiene 100 perfiles."
+  ],
+  "Next roller-light effect": [
+    "下一个旋钮灯效",
+    "次のノブ照明効果",
+    "다음 노브 조명 효과",
+    "Effet suivant du voyant de molette",
+    "Nächster Drehregler-Lichteffekt",
+    "Siguiente efecto de la rueda"
+  ],
+  "Side-light settings could not be read": [
+    "无法读取侧灯设置",
+    "サイドライト設定を読み取れません",
+    "측면 조명 설정을 읽을 수 없습니다",
+    "Impossible de lire les réglages latéraux",
+    "Seitenlichteinstellungen konnten nicht gelesen werden",
+    "No se pudieron leer los ajustes laterales"
+  ],
+  "Record delays between keys": [
+    "记录按键间延迟",
+    "キー間の遅延を記録",
+    "키 사이 지연 기록",
+    "Enregistrer les délais entre touches",
+    "Verzögerungen zwischen Tasten aufzeichnen",
+    "Grabar retardos entre teclas"
+  ],
+  "Unsupported device": [
+    "不支持的设备",
+    "未対応のデバイス",
+    "지원하지 않는 기기",
+    "Appareil non pris en charge",
+    "Nicht unterstütztes Gerät",
+    "Dispositivo no admitido"
+  ],
+  "Next side-light effect": [
+    "下一个侧灯效果",
+    "次のサイドライト効果",
+    "다음 측면 조명 효과",
+    "Effet latéral suivant",
+    "Nächster Seitenlichteffekt",
+    "Siguiente efecto lateral"
+  ],
+  "Macro verification failed": [
+    "宏验证失败",
+    "マクロの確認に失敗しました",
+    "매크로 확인 실패",
+    "Échec de vérification de la macro",
+    "Makroprüfung fehlgeschlagen",
+    "Falló la verificación de macro"
+  ],
+  "Invalid key position": [
+    "无效的按键位置",
+    "無効なキー位置",
+    "잘못된 키 위치",
+    "Position de touche invalide",
+    "Ungültige Tastenposition",
+    "Posición de tecla no válida"
+  ],
+  "Next side-light brightness": [
+    "下一个侧灯亮度",
+    "次のサイドライト明るさ",
+    "다음 측면 조명 밝기",
+    "Luminosité latérale suivante",
+    "Nächste Seitenlichthelligkeit",
+    "Siguiente brillo lateral"
+  ],
+  "Next roller-light speed": [
+    "下一个旋钮灯速",
+    "次のノブ照明速度",
+    "다음 노브 조명 속도",
+    "Vitesse suivante du voyant de molette",
+    "Nächste Drehregler-Lichtgeschwindigkeit",
+    "Siguiente velocidad de la rueda"
+  ],
+  "Could not initialize HID": [
+    "无法初始化 HID",
+    "HIDを初期化できません",
+    "HID를 초기화할 수 없습니다",
+    "Impossible d’initialiser HID",
+    "HID konnte nicht initialisiert werden",
+    "No se pudo iniciar HID"
+  ],
+  "The macro exceeds NUT75 memory": [
+    "宏超出 NUT75 内存",
+    "マクロがNUT75のメモリを超えています",
+    "매크로가 NUT75 메모리를 초과합니다",
+    "La macro dépasse la mémoire NUT75",
+    "Das Makro überschreitet den NUT75-Speicher",
+    "La macro supera la memoria NUT75"
+  ],
+  "The HID packet is too large": [
+    "HID 数据包过大",
+    "HIDパケットが大きすぎます",
+    "HID 패킷이 너무 큽니다",
+    "Le paquet HID est trop grand",
+    "Das HID-Paket ist zu groß",
+    "El paquete HID es demasiado grande"
+  ],
+  "Invalid LED position": [
+    "无效的 LED 位置",
+    "無効なLED位置",
+    "잘못된 LED 위치",
+    "Position LED invalide",
+    "Ungültige LED-Position",
+    "Posición LED no válida"
+  ],
+  "Could not read the existing profile": [
+    "无法读取现有配置",
+    "既存のプロファイルを読み取れません",
+    "기존 프로필을 읽을 수 없습니다",
+    "Impossible de lire le profil existant",
+    "Das vorhandene Profil konnte nicht gelesen werden",
+    "No se pudo leer el perfil existente"
+  ],
+  "Next side-light speed": [
+    "下一个侧灯速度",
+    "次のサイドライト速度",
+    "다음 측면 조명 속도",
+    "Vitesse latérale suivante",
+    "Nächste Seitenlichtgeschwindigkeit",
+    "Siguiente velocidad lateral"
+  ],
+  "Macro numbers must be between 1 and 100": [
+    "宏编号必须在 1 到 100 之间",
+    "マクロ番号は1〜100で指定してください",
+    "매크로 번호는 1~100이어야 합니다",
+    "Les numéros de macros doivent être compris entre 1 et 100",
+    "Makronummern müssen zwischen 1 und 100 liegen",
+    "Los números de macro deben estar entre 1 y 100"
+  ],
+  "The write payload is missing bytes": [
+    "写入数据缺少字节",
+    "書き込みデータのバイト数が不足しています",
+    "쓰기 데이터에 바이트가 부족합니다",
+    "Des octets manquent dans les données à écrire",
+    "In den Schreibdaten fehlen Bytes",
+    "Faltan bytes en los datos de escritura"
+  ],
+  "Device detected": [
+    "已检测到设备",
+    "デバイスを検出",
+    "기기 감지됨",
+    "Appareil détecté",
+    "Gerät erkannt",
+    "Dispositivo detectado"
+  ],
+  "Right-click to remove color": [
+    "右键点击以删除颜色",
+    "右クリックで色を削除",
+    "오른쪽 클릭으로 색상 제거",
+    "Clic droit pour retirer la couleur",
+    "Rechtsklick zum Entfernen der Farbe",
+    "Clic derecho para quitar el color"
+  ],
+  "Back to devices": [
+    "返回设备列表",
+    "デバイス一覧に戻る",
+    "기기 목록으로",
+    "Retour aux appareils",
+    "Zur Geräteliste",
+    "Volver a dispositivos"
+  ],
+  "Switch roller function": [
+    "切换旋钮功能",
+    "ノブの機能を切り替え",
+    "노브 기능 전환",
+    "Changer la fonction de la molette",
+    "Drehreglerfunktion wechseln",
+    "Cambiar función de la rueda"
+  ],
+  "Device function": [
+    "设备功能",
+    "デバイス機能",
+    "기기 기능",
+    "Fonction de l’appareil",
+    "Gerätefunktion",
+    "Función del dispositivo"
+  ],
+  "Could not import the profile": [
+    "无法导入配置",
+    "プロファイルをインポートできません",
+    "프로필을 가져올 수 없습니다",
+    "Impossible d’importer le profil",
+    "Das Profil konnte nicht importiert werden",
+    "No se pudo importar el perfil"
+  ],
+  "Could not export the profile": [
+    "无法导出配置",
+    "プロファイルをエクスポートできません",
+    "프로필을 내보낼 수 없습니다",
+    "Impossible d’exporter le profil",
+    "Das Profil konnte nicht exportiert werden",
+    "No se pudo exportar el perfil"
+  ],
+  "Hue and saturation": [
+    "色相与饱和度",
+    "色相と彩度",
+    "색조 및 채도",
+    "Teinte et saturation",
+    "Farbton und Sättigung",
+    "Tono y saturación"
+  ],
+  "Play / pause preview": [
+    "播放 / 暂停预览",
+    "プレビュー再生 / 一時停止",
+    "미리보기 재생 / 일시정지",
+    "Lire / mettre en pause l’aperçu",
+    "Vorschau abspielen / pausieren",
+    "Reproducir / pausar vista previa"
+  ],
+  "Swap Ctrl / Caps Lock": [
+    "交换 Ctrl / Caps Lock",
+    "Ctrl / Caps Lockを入れ替え",
+    "Ctrl / Caps Lock 교환",
+    "Permuter Ctrl / Verr. maj.",
+    "Ctrl / Feststelltaste tauschen",
+    "Intercambiar Ctrl / Bloq Mayús"
+  ],
+  "Next roller-light color": [
+    "下一个旋钮灯色",
+    "次のノブ照明色",
+    "다음 노브 조명 색상",
+    "Couleur suivante du voyant de molette",
+    "Nächste Drehregler-Lichtfarbe",
+    "Siguiente color de la rueda"
+  ],
+  "Could not save the profile": [
+    "无法保存配置",
+    "プロファイルを保存できません",
+    "프로필을 저장할 수 없습니다",
+    "Impossible d’enregistrer le profil",
+    "Das Profil konnte nicht gespeichert werden",
+    "No se pudo guardar el perfil"
+  ],
+  "Choose a trigger key": [
+    "选择触发按键",
+    "起動キーを選択",
+    "실행 키 선택",
+    "Choisir la touche de déclenchement",
+    "Auslösetaste wählen",
+    "Elegir tecla de activación"
+  ],
+  "Macro memory is full": [
+    "宏内存已满",
+    "マクロメモリがいっぱいです",
+    "매크로 메모리가 가득 찼습니다",
+    "La mémoire des macros est pleine",
+    "Der Makrospeicher ist voll",
+    "La memoria de macros está llena"
+  ],
+  "Reconnect 2.4 GHz": [
+    "重新连接 2.4 GHz",
+    "2.4 GHzを再接続",
+    "2.4 GHz 다시 연결",
+    "Reconnecter en 2,4 GHz",
+    "2,4 GHz erneut verbinden",
+    "Reconectar 2,4 GHz"
+  ],
+  "Next side-light color": [
+    "下一个侧灯颜色",
+    "次のサイドライト色",
+    "다음 측면 조명 색상",
+    "Couleur latérale suivante",
+    "Nächste Seitenlichtfarbe",
+    "Siguiente color lateral"
+  ],
+  "Caps Lock key backlight": [
+    "Caps Lock 按键背光",
+    "Caps Lockキーのバックライト",
+    "Caps Lock 키 백라이트",
+    "Rétroéclairage de la touche Verr. maj.",
+    "Beleuchtung der Feststelltaste",
+    "Luz de la tecla Bloq Mayús"
+  ],
+  "Vendor shortcut": [
+    "官方快捷键",
+    "メーカーのショートカット",
+    "제조사 단축키",
+    "Raccourcis du fabricant",
+    "Hersteller-Tastenkürzel",
+    "Atajos del fabricante"
+  ],
+  "Finding devices…": [
+    "正在查找设备…",
+    "デバイスを検索中…",
+    "기기 찾는 중…",
+    "Recherche d’appareils…",
+    "Geräte werden gesucht…",
+    "Buscando dispositivos…"
+  ],
+  "Restore default": [
+    "恢复默认",
+    "初期設定に戻す",
+    "기본값 복원",
+    "Rétablir les valeurs par défaut",
+    "Standard wiederherstellen",
+    "Restaurar valores predeterminados"
+  ],
+  "Delay before action": [
+    "操作前延迟",
+    "操作前の遅延",
+    "동작 전 지연",
+    "Délai avant l’action",
+    "Verzögerung vor der Aktion",
+    "Retardo antes de la acción"
+  ],
+  "Keyboard function": [
+    "键盘功能",
+    "キーボード機能",
+    "키보드 기능",
+    "Fonction du clavier",
+    "Tastaturfunktion",
+    "Función del teclado"
+  ],
+  "NUT75 is not connected": [
+    "NUT75 未连接",
+    "NUT75は未接続です",
+    "NUT75가 연결되지 않았습니다",
+    "NUT75 n’est pas connecté",
+    "NUT75 ist nicht verbunden",
+    "NUT75 no está conectado"
+  ],
+  "The HID report is too large": [
+    "HID 报告过大",
+    "HIDレポートが大きすぎます",
+    "HID 보고서가 너무 큽니다",
+    "Le rapport HID est trop grand",
+    "Der HID-Bericht ist zu groß",
+    "El informe HID es demasiado grande"
+  ],
+  "The profile file is too large.": [
+    "配置文件过大。",
+    "プロファイルのファイルが大きすぎます。",
+    "프로필 파일이 너무 큽니다.",
+    "Le fichier de profil est trop grand.",
+    "Die Profildatei ist zu groß.",
+    "El archivo de perfil es demasiado grande."
+  ],
+  "Caps Lock indicator": [
+    "Caps Lock 指示灯",
+    "Caps Lockインジケーター",
+    "Caps Lock 표시등",
+    "Voyant Verr. maj.",
+    "Feststelltastenanzeige",
+    "Indicador Bloq Mayús"
+  ],
+  "Device details": [
+    "设备详情",
+    "デバイス情報",
+    "기기 세부정보",
+    "Détails de l’appareil",
+    "Gerätedetails",
+    "Detalles del dispositivo"
+  ],
+  "Per-key colors": [
+    "逐键颜色",
+    "キー別カラー",
+    "개별 키 색상",
+    "Couleurs par touche",
+    "Einzeltastenfarben",
+    "Colores por tecla"
+  ],
+  "Last input priority": [
+    "最后输入优先",
+    "最後の入力を優先",
+    "마지막 입력 우선",
+    "Priorité à la dernière entrée",
+    "Letzte Eingabe bevorzugen",
+    "Prioridad a la última entrada"
+  ],
+  "The profile file is too large": [
+    "配置文件过大",
+    "プロファイルのファイルが大きすぎます",
+    "프로필 파일이 너무 큽니다",
+    "Le fichier de profil est trop grand",
+    "Die Profildatei ist zu groß",
+    "El archivo de perfil es demasiado grande"
+  ],
+  "The macro name is too long": [
+    "宏名称过长",
+    "マクロ名が長すぎます",
+    "매크로 이름이 너무 깁니다",
+    "Le nom de la macro est trop long",
+    "Der Makroname ist zu lang",
+    "El nombre de la macro es demasiado largo"
+  ],
+  "Fixed Fn position": [
+    "固定 Fn 位置",
+    "Fn位置は固定",
+    "고정된 Fn 위치",
+    "Position Fn fixe",
+    "Feste Fn-Position",
+    "Posición Fn fija"
+  ],
+  "Save current color": [
+    "保存当前颜色",
+    "現在の色を保存",
+    "현재 색상 저장",
+    "Enregistrer la couleur actuelle",
+    "Aktuelle Farbe speichern",
+    "Guardar color actual"
+  ],
+  "Your devices": [
+    "您的设备",
+    "デバイス一覧",
+    "내 기기",
+    "Vos appareils",
+    "Deine Geräte",
+    "Tus dispositivos"
+  ],
+  "No devices yet": [
+    "暂无设备",
+    "デバイスがありません",
+    "기기가 없습니다",
+    "Aucun appareil",
+    "Noch keine Geräte",
+    "No hay dispositivos"
+  ],
+  "Connect keyboard": [
+    "连接键盘",
+    "キーボードを接続",
+    "키보드 연결",
+    "Connecter le clavier",
+    "Tastatur verbinden",
+    "Conectar teclado"
+  ],
+  "Connect device": [
+    "连接设备",
+    "デバイスを接続",
+    "기기 연결",
+    "Connecter un appareil",
+    "Gerät verbinden",
+    "Conectar dispositivo"
+  ],
+  "Keyboard settings": [
+    "键盘设置",
+    "キーボード設定",
+    "키보드 설정",
+    "Réglages du clavier",
+    "Tastatureinstellungen",
+    "Ajustes del teclado"
+  ],
+  "Press again to stop": [
+    "再次按下停止",
+    "もう一度押して停止",
+    "다시 눌러 중지",
+    "Appuyer à nouveau pour arrêter",
+    "Zum Stoppen erneut drücken",
+    "Pulsar de nuevo para detener"
+  ],
+  "CB - Key combination": [
+    "CB - 组合键",
+    "CB - キーの組み合わせ",
+    "CB - 키 조합",
+    "CB - Combinaison de touches",
+    "CB - Tastenkombination",
+    "CB - Combinación de teclas"
+  ],
+  "Scroll down": [
+    "向下滚动",
+    "下にスクロール",
+    "아래로 스크롤",
+    "Défiler vers le bas",
+    "Nach unten scrollen",
+    "Desplazar hacia abajo"
+  ],
+  "Next lighting effect": [
+    "下一个灯光效果",
+    "次の照明効果",
+    "다음 조명 효과",
+    "Effet d’éclairage suivant",
+    "Nächster Beleuchtungseffekt",
+    "Siguiente efecto de iluminación"
+  ],
+  "Next effect": [
+    "下一个效果",
+    "次の効果",
+    "다음 효과",
+    "Effet suivant",
+    "Nächster Effekt",
+    "Siguiente efecto"
+  ],
+  "Export NUT75 profile": [
+    "导出 NUT75 配置",
+    "NUT75プロファイルをエクスポート",
+    "NUT75 프로필 내보내기",
+    "Exporter le profil NUT75",
+    "NUT75-Profil exportieren",
+    "Exportar perfil NUT75"
+  ],
+  "Import NUT75 profile": [
+    "导入 NUT75 配置",
+    "NUT75プロファイルをインポート",
+    "NUT75 프로필 가져오기",
+    "Importer un profil NUT75",
+    "NUT75-Profil importieren",
+    "Importar perfil NUT75"
+  ],
+  "Mouse (device)": [
+    "鼠标（设备）",
+    "マウス（デバイス）",
+    "마우스 (기기)",
+    "Souris (appareil)",
+    "Maus (Gerät)",
+    "Ratón (dispositivo)"
+  ],
+  "Media (device)": [
+    "媒体（设备）",
+    "メディア（デバイス）",
+    "미디어 (기기)",
+    "Multimédia (appareil)",
+    "Medien (Gerät)",
+    "Multimedia (dispositivo)"
+  ],
+  "HID only wrote": [
+    "HID 仅写入了",
+    "HIDで書き込まれた量",
+    "HID 쓰기 결과",
+    "HID n’a écrit que",
+    "HID hat nur geschrieben",
+    "HID solo escribió"
+  ],
+  "+ Add device": [
+    "+ 添加设备",
+    "+ デバイスを追加",
+    "+ 기기 추가",
+    "+ Ajouter un appareil",
+    "+ Gerät hinzufügen",
+    "+ Añadir dispositivo"
+  ],
+  "Swap F1–F12 functions": [
+    "交换 F1–F12 功能",
+    "F1–F12の機能を入れ替え",
+    "F1–F12 기능 교환",
+    "Permuter les fonctions F1–F12",
+    "F1–F12-Funktionen tauschen",
+    "Intercambiar funciones F1–F12"
+  ],
+  "RGB windmill": [
+    "RGB 风车",
+    "RGB風車",
+    "RGB 풍차",
+    "Moulin RGB",
+    "RGB-Windrad",
+    "Molinillo RGB"
+  ],
+  "Play / pause": [
+    "播放 / 暂停",
+    "再生 / 一時停止",
+    "재생 / 일시정지",
+    "Lecture / pause",
+    "Wiedergabe / Pause",
+    "Reproducir / pausar"
+  ],
+  "MT - Tap / hold": [
+    "MT - 轻按 / 长按",
+    "MT - タップ / 長押し",
+    "MT - 탭 / 길게 누르기",
+    "MT - Appui bref / long",
+    "MT - Tippen / Halten",
+    "MT - Toque / mantener"
+  ],
+  "TGL - Toggle": [
+    "TGL - 切换",
+    "TGL - 切り替え",
+    "TGL - 전환",
+    "TGL - Bascule",
+    "TGL - Umschalten",
+    "TGL - Alternar"
+  ],
+  "Searching for NUT75…": [
+    "正在搜索 NUT75…",
+    "NUT75を検索中…",
+    "NUT75 검색 중…",
+    "Recherche de NUT75…",
+    "NUT75 wird gesucht…",
+    "Buscando NUT75…"
+  ],
+  "Disconnected": [
+    "已断开连接",
+    "切断しました",
+    "연결 해제됨",
+    "Déconnecté",
+    "Getrennt",
+    "Desconectado"
+  ],
+  "Lighting speed up": [
+    "加快灯光速度",
+    "照明速度を上げる",
+    "조명 속도 증가",
+    "Accélérer l’éclairage",
+    "Beleuchtung beschleunigen",
+    "Aumentar velocidad de iluminación"
+  ],
+  "Lighting speed down": [
+    "减慢灯光速度",
+    "照明速度を下げる",
+    "조명 속도 감소",
+    "Ralentir l’éclairage",
+    "Beleuchtung verlangsamen",
+    "Reducir velocidad de iluminación"
+  ],
+  "NUT75 was not found": [
+    "未找到 NUT75",
+    "NUT75が見つかりません",
+    "NUT75를 찾을 수 없습니다",
+    "NUT75 introuvable",
+    "NUT75 nicht gefunden",
+    "No se encontró NUT75"
+  ],
+  "Use custom color": [
+    "使用自定义颜色",
+    "カスタムカラーを使用",
+    "사용자 색상 사용",
+    "Utiliser une couleur personnalisée",
+    "Eigene Farbe verwenden",
+    "Usar color personalizado"
+  ],
+  "Debounce level": [
+    "消抖等级",
+    "デバウンスレベル",
+    "디바운스 단계",
+    "Niveau d’anti-rebond",
+    "Entprellstufe",
+    "Nivel antirrebote"
+  ],
+  "Opposing key": [
+    "相反按键",
+    "反対方向のキー",
+    "반대 방향 키",
+    "Touche opposée",
+    "Gegentaste",
+    "Tecla opuesta"
+  ],
+  "Key 1 priority": [
+    "按键 1 优先",
+    "キー1を優先",
+    "키 1 우선",
+    "Priorité à la touche 1",
+    "Taste 1 bevorzugen",
+    "Prioridad de tecla 1"
+  ],
+  "Key 2 priority": [
+    "按键 2 优先",
+    "キー2を優先",
+    "키 2 우선",
+    "Priorité à la touche 2",
+    "Taste 2 bevorzugen",
+    "Prioridad de tecla 2"
+  ],
+  "Dismiss notification": [
+    "关闭通知",
+    "通知を閉じる",
+    "알림 닫기",
+    "Fermer la notification",
+    "Mitteilung schließen",
+    "Cerrar notificación"
+  ],
+  "Mouse back": [
+    "鼠标后退",
+    "マウスの戻る",
+    "마우스 뒤로",
+    "Bouton précédent de la souris",
+    "Maus zurück",
+    "Atrás del ratón"
+  ],
+  "Mouse forward": [
+    "鼠标前进",
+    "マウスの進む",
+    "마우스 앞으로",
+    "Bouton suivant de la souris",
+    "Maus vorwärts",
+    "Adelante del ratón"
+  ],
+  "Scroll up": [
+    "向上滚动",
+    "上にスクロール",
+    "위로 스크롤",
+    "Défiler vers le haut",
+    "Nach oben scrollen",
+    "Desplazar hacia arriba"
+  ],
+  "Previous effect": [
+    "上一个效果",
+    "前の効果",
+    "이전 효과",
+    "Effet précédent",
+    "Vorheriger Effekt",
+    "Efecto anterior"
+  ],
+  "Connecting…": [
+    "正在连接…",
+    "接続中…",
+    "연결 중…",
+    "Connexion…",
+    "Verbindung wird hergestellt…",
+    "Conectando…"
+  ],
+  "System": [
+    "跟随系统",
+    "システムに合わせる",
+    "시스템 설정",
+    "Système",
+    "System",
+    "Sistema"
+  ],
+  "Lock Windows key": [
+    "锁定 Win 键",
+    "Windowsキーをロック",
+    "Windows 키 잠금",
+    "Verrouiller la touche Windows",
+    "Windows-Taste sperren",
+    "Bloquear tecla Windows"
+  ],
+  "Add action": [
+    "添加操作",
+    "操作を追加",
+    "동작 추가",
+    "Ajouter une action",
+    "Aktion hinzufügen",
+    "Añadir acción"
+  ],
+  "Unassigned": [
+    "未分配",
+    "未割り当て",
+    "미할당",
+    "Non affecté",
+    "Nicht zugewiesen",
+    "Sin asignar"
+  ],
+  "Volume up": [
+    "增大音量",
+    "音量を上げる",
+    "볼륨 높이기",
+    "Augmenter le volume",
+    "Lauter",
+    "Subir volumen"
+  ],
+  "Volume down": [
+    "减小音量",
+    "音量を下げる",
+    "볼륨 낮추기",
+    "Baisser le volume",
+    "Leiser",
+    "Bajar volumen"
+  ],
+  "Next track": [
+    "下一曲",
+    "次の曲",
+    "다음 곡",
+    "Piste suivante",
+    "Nächster Titel",
+    "Pista siguiente"
+  ],
+  "Detailed table": [
+    "详细表格",
+    "詳細テーブル",
+    "상세 표",
+    "Tableau détaillé",
+    "Detailtabelle",
+    "Tabla detallada"
+  ],
+  "Restart preview": [
+    "重新播放预览",
+    "プレビューを再開",
+    "미리보기 다시 시작",
+    "Relancer l’aperçu",
+    "Vorschau neu starten",
+    "Reiniciar vista previa"
+  ],
+  "Pause preview": [
+    "暂停预览",
+    "プレビューを一時停止",
+    "미리보기 일시정지",
+    "Mettre l’aperçu en pause",
+    "Vorschau pausieren",
+    "Pausar vista previa"
+  ],
+  "Assign action": [
+    "分配操作",
+    "操作を割り当て",
+    "동작 할당",
+    "Affecter une action",
+    "Aktion zuweisen",
+    "Asignar acción"
+  ],
+  "Edit macros": [
+    "编辑宏",
+    "マクロを編集",
+    "매크로 편집",
+    "Modifier les macros",
+    "Makros bearbeiten",
+    "Editar macros"
+  ],
+  "From device": [
+    "按设备设置",
+    "デバイス設定に従う",
+    "기기 설정",
+    "Selon l’appareil",
+    "Vom Gerät",
+    "Según el dispositivo"
+  ],
+  "Profile imported": [
+    "配置已导入",
+    "プロファイルをインポートしました",
+    "프로필 가져옴",
+    "Profil importé",
+    "Profil importiert",
+    "Perfil importado"
+  ],
+  "Reverse lighting direction": [
+    "反转灯光方向",
+    "照明方向を反転",
+    "조명 방향 반전",
+    "Inverser le sens de l’éclairage",
+    "Beleuchtungsrichtung umkehren",
+    "Invertir dirección de iluminación"
+  ],
+  "Profile exported": [
+    "配置已导出",
+    "プロファイルをエクスポートしました",
+    "프로필 내보냄",
+    "Profil exporté",
+    "Profil exportiert",
+    "Perfil exportado"
+  ],
+  "Keyboard finish": [
+    "键盘配色",
+    "キーボードのカラー",
+    "키보드 색상",
+    "Finition du clavier",
+    "Tastaturfarbe",
+    "Acabado del teclado"
+  ],
+  "CONNECTING": [
+    "正在连接",
+    "接続中",
+    "연결 중",
+    "CONNEXION EN COURS",
+    "VERBINDUNG LÄUFT",
+    "CONECTANDO"
+  ],
+  "Not connected": [
+    "未连接",
+    "未接続",
+    "연결 안 됨",
+    "Non connecté",
+    "Nicht verbunden",
+    "Sin conexión"
+  ],
+  "Disconnect": [
+    "断开连接",
+    "切断",
+    "연결 해제",
+    "Déconnecter",
+    "Trennen",
+    "Desconectar"
+  ],
+  "Operating system": [
+    "操作系统",
+    "オペレーティングシステム",
+    "운영체제",
+    "Système d’exploitation",
+    "Betriebssystem",
+    "Sistema operativo"
+  ],
+  "Stars": [
+    "繁星",
+    "星空",
+    "별빛",
+    "Étoiles",
+    "Sterne",
+    "Estrellas"
+  ],
+  "Press roller": [
+    "按下旋钮",
+    "ノブを押す",
+    "노브 누르기",
+    "Appuyer sur la molette",
+    "Drehregler drücken",
+    "Pulsar rueda"
+  ],
+  "Key / mouse": [
+    "按键 / 鼠标",
+    "キー / マウス",
+    "키 / 마우스",
+    "Touche / souris",
+    "Taste / Maus",
+    "Tecla / ratón"
+  ],
+  "Delete action": [
+    "删除操作",
+    "操作を削除",
+    "동작 삭제",
+    "Supprimer l’action",
+    "Aktion löschen",
+    "Eliminar acción"
+  ],
+  "+ New profile": [
+    "+ 新建配置",
+    "+ 新規プロファイル",
+    "+ 새 프로필",
+    "+ Nouveau profil",
+    "+ Neues Profil",
+    "+ Nuevo perfil"
+  ],
+  "Close connection": [
+    "关闭连接窗口",
+    "接続画面を閉じる",
+    "연결 창 닫기",
+    "Fermer la connexion",
+    "Verbindungsfenster schließen",
+    "Cerrar conexión"
+  ],
+  "Connecting": [
+    "正在连接",
+    "接続中",
+    "연결 중",
+    "Connexion en cours",
+    "Verbindung läuft",
+    "Conectando"
+  ],
+  "Brightness up": [
+    "提高亮度",
+    "明るくする",
+    "밝기 증가",
+    "Augmenter la luminosité",
+    "Heller",
+    "Aumentar brillo"
+  ],
+  "Brightness down": [
+    "降低亮度",
+    "暗くする",
+    "밝기 감소",
+    "Baisser la luminosité",
+    "Dunkler",
+    "Reducir brillo"
+  ],
+  "HID device": [
+    "HID 设备",
+    "HIDデバイス",
+    "HID 기기",
+    "Appareil HID",
+    "HID-Gerät",
+    "Dispositivo HID"
+  ],
+  "Side lights": [
+    "侧灯",
+    "サイドライト",
+    "측면 조명",
+    "Lumières latérales",
+    "Seitenbeleuchtung",
+    "Luces laterales"
+  ],
+  "Color value": [
+    "明度",
+    "明度",
+    "명도",
+    "Valeur de couleur",
+    "Farbwert",
+    "Valor de color"
+  ],
+  "Offline": [
+    "离线",
+    "オフライン",
+    "오프라인",
+    "Hors ligne",
+    "Offline",
+    "Sin conexión"
+  ],
+  "Start again": [
+    "重新开始",
+    "最初からやり直す",
+    "다시 시작",
+    "Recommencer",
+    "Neu beginnen",
+    "Volver a empezar"
+  ],
+  "Next lighting color": [
+    "下一个灯光颜色",
+    "次の照明色",
+    "다음 조명 색상",
+    "Couleur d’éclairage suivante",
+    "Nächste Beleuchtungsfarbe",
+    "Siguiente color de iluminación"
+  ],
+  "Key combination": [
+    "组合键",
+    "キーの組み合わせ",
+    "키 조합",
+    "Combinaison de touches",
+    "Tastenkombination",
+    "Combinación de teclas"
+  ],
+  "+  CONNECT": [
+    "+ 连接",
+    "+ 接続",
+    "+ 연결",
+    "+ CONNECTER",
+    "+ VERBINDEN",
+    "+ CONECTAR"
+  ],
+  "Connected": [
+    "已连接",
+    "接続済み",
+    "연결됨",
+    "Connecté",
+    "Verbunden",
+    "Conectado"
+  ],
+  "Fill all": [
+    "填充全部",
+    "すべて塗る",
+    "전체 채우기",
+    "Tout remplir",
+    "Alle färben",
+    "Rellenar todo"
+  ],
+  "Peaks": [
+    "群峰",
+    "山並み",
+    "산봉우리",
+    "Sommets",
+    "Gipfel",
+    "Picos"
+  ],
+  "Rotate left": [
+    "向左旋转",
+    "左に回す",
+    "왼쪽 회전",
+    "Tourner à gauche",
+    "Nach links drehen",
+    "Girar a la izquierda"
+  ],
+  "Record delays": [
+    "记录延迟",
+    "遅延を記録",
+    "지연 기록",
+    "Enregistrer les délais",
+    "Verzögerungen aufzeichnen",
+    "Grabar retardos"
+  ],
+  "Key sequence": [
+    "按键序列",
+    "キーシーケンス",
+    "키 시퀀스",
+    "Séquence de touches",
+    "Tastenfolge",
+    "Secuencia de teclas"
+  ],
+  "Repeat count": [
+    "重复次数",
+    "繰り返し回数",
+    "반복 횟수",
+    "Nombre de répétitions",
+    "Wiederholungen",
+    "Número de repeticiones"
+  ],
+  "Left click": [
+    "鼠标左键",
+    "左クリック",
+    "왼쪽 클릭",
+    "Clic gauche",
+    "Linksklick",
+    "Clic izquierdo"
+  ],
+  "Right click": [
+    "鼠标右键",
+    "右クリック",
+    "오른쪽 클릭",
+    "Clic droit",
+    "Rechtsklick",
+    "Clic derecho"
+  ],
+  "Middle click": [
+    "鼠标中键",
+    "中央クリック",
+    "가운데 클릭",
+    "Clic central",
+    "Mittelklick",
+    "Clic central"
+  ],
+  "Applied": [
+    "已应用",
+    "適用しました",
+    "적용됨",
+    "Appliqué",
+    "Angewendet",
+    "Aplicado"
+  ],
+  "USB mode": [
+    "USB 模式",
+    "USBモード",
+    "USB 모드",
+    "Mode USB",
+    "USB-Modus",
+    "Modo USB"
+  ],
+  " (fixed)": [
+    "（固定）",
+    "（固定）",
+    " (고정)",
+    " (fixe)",
+    " (fest)",
+    " (fijo)"
+  ],
+  "Custom Colors": [
+    "自定义颜色",
+    "カスタムカラー",
+    "사용자 색상",
+    "Couleurs personnalisées",
+    "Eigene Farben",
+    "Colores personalizados"
+  ],
+  "Appearance": [
+    "外观",
+    "外観",
+    "화면 모드",
+    "Apparence",
+    "Darstellung",
+    "Apariencia"
+  ],
+  "Never": [
+    "从不",
+    "なし",
+    "사용 안 함",
+    "Jamais",
+    "Nie",
+    "Nunca"
+  ],
+  "Actions": [
+    "操作",
+    "操作",
+    "동작",
+    "Actions",
+    "Aktionen",
+    "Acciones"
+  ],
+  "Static": [
+    "常亮",
+    "点灯",
+    "고정",
+    "Fixe",
+    "Statisch",
+    "Estático"
+  ],
+  "Reactive": [
+    "按下点亮",
+    "押して点灯",
+    "누르면 켜짐",
+    "Réactif",
+    "Reaktiv",
+    "Reactivo"
+  ],
+  "Snow": [
+    "飘雪",
+    "雪",
+    "눈",
+    "Neige",
+    "Schnee",
+    "Nieve"
+  ],
+  "Spectrum": [
+    "光谱",
+    "スペクトル",
+    "스펙트럼",
+    "Spectre",
+    "Spektrum",
+    "Espectro"
+  ],
+  "Flash": [
+    "闪烁",
+    "点滅",
+    "점멸",
+    "Flash",
+    "Blitz",
+    "Destello"
+  ],
+  "Stream": [
+    "流光",
+    "流れ",
+    "흐름",
+    "Flux",
+    "Strom",
+    "Corriente"
+  ],
+  "Mute": [
+    "静音",
+    "ミュート",
+    "음소거",
+    "Muet",
+    "Stumm",
+    "Silenciar"
+  ],
+  "Key tap": [
+    "轻按按键",
+    "キータップ",
+    "키 탭",
+    "Appui bref",
+    "Taste antippen",
+    "Toque de tecla"
+  ],
+  "Key down": [
+    "按下按键",
+    "キーを押す",
+    "키 누르기",
+    "Touche enfoncée",
+    "Taste drücken",
+    "Pulsar tecla"
+  ],
+  "Mouse click": [
+    "鼠标点击",
+    "マウスクリック",
+    "마우스 클릭",
+    "Clic de souris",
+    "Mausklick",
+    "Clic de ratón"
+  ],
+  "New macro": [
+    "新建宏",
+    "新規マクロ",
+    "새 매크로",
+    "Nouvelle macro",
+    "Neues Makro",
+    "Nueva macro"
+  ],
+  "Profile name": [
+    "配置名称",
+    "プロファイル名",
+    "프로필 이름",
+    "Nom du profil",
+    "Profilname",
+    "Nombre del perfil"
+  ],
+  "Previous track": [
+    "上一曲",
+    "前の曲",
+    "이전 곡",
+    "Piste précédente",
+    "Vorheriger Titel",
+    "Pista anterior"
+  ],
+  "Stop playback": [
+    "停止播放",
+    "再生を停止",
+    "재생 중지",
+    "Arrêter la lecture",
+    "Wiedergabe stoppen",
+    "Detener reproducción"
+  ],
+  "Play preview": [
+    "播放预览",
+    "プレビューを再生",
+    "미리보기 재생",
+    "Lire l’aperçu",
+    "Vorschau abspielen",
+    "Reproducir vista previa"
+  ],
+  "Neutral": [
+    "中立",
+    "ニュートラル",
+    "중립",
+    "Neutre",
+    "Neutral",
+    "Neutro"
+  ],
+  "Close panel": [
+    "关闭面板",
+    "パネルを閉じる",
+    "패널 닫기",
+    "Fermer le panneau",
+    "Bereich schließen",
+    "Cerrar panel"
+  ],
+  "Selected": [
+    "已选中",
+    "選択中",
+    "선택됨",
+    "Sélectionné",
+    "Ausgewählt",
+    "Seleccionado"
+  ],
+  "New profile": [
+    "新建配置",
+    "新規プロファイル",
+    "새 프로필",
+    "Nouveau profil",
+    "Neues Profil",
+    "Nuevo perfil"
+  ],
+  "DEVICE": [
+    "设备",
+    "デバイス",
+    "기기",
+    "APPAREIL",
+    "GERÄT",
+    "DISPOSITIVO"
+  ],
+  "Choose color": [
+    "选择颜色",
+    "色を選択",
+    "색상 선택",
+    "Choisir une couleur",
+    "Farbe wählen",
+    "Elegir color"
+  ],
+  "KEY TEST": [
+    "按键测试",
+    "キーテスト",
+    "키 테스트",
+    "TEST DES TOUCHES",
+    "TASTENTEST",
+    "PRUEBA DE TECLAS"
+  ],
+  "Language": [
+    "语言",
+    "言語",
+    "언어",
+    "Langue",
+    "Sprache",
+    "Idioma"
+  ],
+  "Default": [
+    "默认",
+    "既定",
+    "기본값",
+    "Par défaut",
+    "Standard",
+    "Predeterminado"
+  ],
+  "Scan again": [
+    "重新扫描",
+    "再検索",
+    "다시 검색",
+    "Rechercher à nouveau",
+    "Erneut suchen",
+    "Volver a buscar"
+  ],
+  "Search": [
+    "搜索",
+    "検索",
+    "검색",
+    "Rechercher",
+    "Suchen",
+    "Buscar"
+  ],
+  "Keyboard": [
+    "键盘",
+    "キーボード",
+    "키보드",
+    "Clavier",
+    "Tastatur",
+    "Teclado"
+  ],
+  "Advanced": [
+    "高级",
+    "詳細設定",
+    "고급",
+    "Avancé",
+    "Erweitert",
+    "Avanzado"
+  ],
+  "Undo": [
+    "撤销",
+    "元に戻す",
+    "실행 취소",
+    "Annuler",
+    "Rückgängig",
+    "Deshacer"
+  ],
+  "Effects": [
+    "效果",
+    "効果",
+    "효과",
+    "Effets",
+    "Effekte",
+    "Efectos"
+  ],
+  "Reactive off": [
+    "按下熄灭",
+    "押して消灯",
+    "누르면 꺼짐",
+    "Extinction réactive",
+    "Reaktiv aus",
+    "Apagar al pulsar"
+  ],
+  "Flowers": [
+    "缤纷",
+    "花",
+    "꽃",
+    "Fleurs",
+    "Blumen",
+    "Flores"
+  ],
+  "Breathing": [
+    "呼吸",
+    "呼吸",
+    "숨쉬기",
+    "Respiration",
+    "Atmen",
+    "Respiración"
+  ],
+  "Fountain": [
+    "喷泉",
+    "噴水",
+    "분수",
+    "Fontaine",
+    "Fontäne",
+    "Fuente"
+  ],
+  "Wave": [
+    "波浪",
+    "ウェーブ",
+    "물결",
+    "Vague",
+    "Welle",
+    "Onda"
+  ],
+  "Double wave": [
+    "双重波浪",
+    "ダブルウェーブ",
+    "이중 물결",
+    "Double vague",
+    "Doppelwelle",
+    "Onda doble"
+  ],
+  "Ripple": [
+    "涟漪",
+    "波紋",
+    "잔물결",
+    "Ondulation",
+    "Wellenring",
+    "Ondulación"
+  ],
+  "Diagonal rain": [
+    "斜雨",
+    "斜めの雨",
+    "대각선 비",
+    "Pluie diagonale",
+    "Schräger Regen",
+    "Lluvia diagonal"
+  ],
+  "Rotate right": [
+    "向右旋转",
+    "右に回す",
+    "오른쪽 회전",
+    "Tourner à droite",
+    "Nach rechts drehen",
+    "Girar a la derecha"
+  ],
+  "Record": [
+    "录制",
+    "記録",
+    "기록",
+    "Enregistrer",
+    "Aufzeichnen",
+    "Grabar"
+  ],
+  "Stop": [
+    "停止",
+    "停止",
+    "중지",
+    "Arrêter",
+    "Stoppen",
+    "Detener"
+  ],
+  "Key up": [
+    "松开按键",
+    "キーを離す",
+    "키 떼기",
+    "Touche relâchée",
+    "Taste loslassen",
+    "Soltar tecla"
+  ],
+  "Action": [
+    "操作",
+    "操作",
+    "동작",
+    "Action",
+    "Aktion",
+    "Acción"
+  ],
+  "Duplicate": [
+    "复制",
+    "複製",
+    "복제",
+    "Dupliquer",
+    "Duplizieren",
+    "Duplicar"
+  ],
+  "Details": [
+    "详情",
+    "詳細",
+    "세부정보",
+    "Détails",
+    "Details",
+    "Detalles"
+  ],
+  "When pressed": [
+    "按下时",
+    "押したとき",
+    "눌렀을 때",
+    "À l’appui",
+    "Beim Drücken",
+    "Al pulsar"
+  ],
+  "Charging": [
+    "正在充电",
+    "充電中",
+    "충전 중",
+    "En charge",
+    "Wird geladen",
+    "Cargando"
+  ],
+  "Options": [
+    "选项",
+    "オプション",
+    "옵션",
+    "Options",
+    "Optionen",
+    "Opciones"
+  ],
+  "Modifier 1": [
+    "修饰键 1",
+    "修飾キー1",
+    "보조 키 1",
+    "Modificateur 1",
+    "Modifikator 1",
+    "Modificador 1"
+  ],
+  "Modifier 2": [
+    "修饰键 2",
+    "修飾キー2",
+    "보조 키 2",
+    "Modificateur 2",
+    "Modifikator 2",
+    "Modificador 2"
+  ],
+  "Back": [
+    "后退",
+    "戻る",
+    "뒤로",
+    "Précédent",
+    "Zurück",
+    "Atrás"
+  ],
+  "Forward": [
+    "前进",
+    "進む",
+    "앞으로",
+    "Suivant",
+    "Vorwärts",
+    "Adelante"
+  ],
+  "Close photo": [
+    "关闭图片",
+    "写真を閉じる",
+    "사진 닫기",
+    "Fermer la photo",
+    "Foto schließen",
+    "Cerrar foto"
+  ],
+  "at byte": [
+    "字节位置",
+    "バイト位置",
+    "바이트 위치",
+    "à l’octet",
+    "bei Byte",
+    "en el byte"
+  ],
+  "BACKLIGHT": [
+    "背光",
+    "バックライト",
+    "백라이트",
+    "RÉTROÉCLAIRAGE",
+    "BELEUCHTUNG",
+    "ILUMINACIÓN"
+  ],
+  "SETTINGS": [
+    "设置",
+    "設定",
+    "설정",
+    "RÉGLAGES",
+    "EINSTELLUNGEN",
+    "AJUSTES"
+  ],
+  "Settings": [
+    "设置",
+    "設定",
+    "설정",
+    "Réglages",
+    "Einstellungen",
+    "Ajustes"
+  ],
+  "Connect": [
+    "连接",
+    "接続",
+    "연결",
+    "Connecter",
+    "Verbinden",
+    "Conectar"
+  ],
+  "CONNECTION": [
+    "连接",
+    "接続",
+    "연결",
+    "CONNEXION",
+    "VERBINDUNG",
+    "CONEXIÓN"
+  ],
+  "Refresh": [
+    "刷新",
+    "再読み込み",
+    "새로고침",
+    "Actualiser",
+    "Aktualisieren",
+    "Actualizar"
+  ],
+  "Sleep after": [
+    "休眠时间",
+    "スリープまで",
+    "절전 시간",
+    "Mise en veille après",
+    "Ruhezustand nach",
+    "Suspender después de"
+  ],
+  "Apply": [
+    "应用",
+    "適用",
+    "적용",
+    "Appliquer",
+    "Anwenden",
+    "Aplicar"
+  ],
+  "Backlight": [
+    "背光",
+    "バックライト",
+    "백라이트",
+    "Rétroéclairage",
+    "Beleuchtung",
+    "Iluminación"
+  ],
+  "Brightness": [
+    "亮度",
+    "明るさ",
+    "밝기",
+    "Luminosité",
+    "Helligkeit",
+    "Brillo"
+  ],
+  "Off": [
+    "关闭",
+    "オフ",
+    "꺼짐",
+    "Éteint",
+    "Aus",
+    "Apagado"
+  ],
+  "Cross weave": [
+    "交织",
+    "交差",
+    "교차",
+    "Entrecroisé",
+    "Kreuzweben",
+    "Entretejido"
+  ],
+  "Mountain": [
+    "山峦",
+    "山",
+    "산",
+    "Montagne",
+    "Berg",
+    "Montaña"
+  ],
+  "Shuttle": [
+    "穿梭",
+    "往復",
+    "왕복",
+    "Navette",
+    "Pendel",
+    "Vaivén"
+  ],
+  "+ Macro": [
+    "+ 宏",
+    "+ マクロ",
+    "+ 매크로",
+    "+ Macro",
+    "+ Makro",
+    "+ Macro"
+  ],
+  "Rename": [
+    "重命名",
+    "名前を変更",
+    "이름 변경",
+    "Renommer",
+    "Umbenennen",
+    "Renombrar"
+  ],
+  "Once": [
+    "一次",
+    "1回",
+    "한 번",
+    "Une fois",
+    "Einmal",
+    "Una vez"
+  ],
+  "Roller": [
+    "旋钮",
+    "ノブ",
+    "노브",
+    "Molette",
+    "Drehregler",
+    "Rueda"
+  ],
+  "10 minutes": [
+    "10 分钟",
+    "10分",
+    "10분",
+    "10 minutes",
+    "10 Minuten",
+    "10 minutos"
+  ],
+  "30 minutes": [
+    "30 分钟",
+    "30分",
+    "30분",
+    "30 minutes",
+    "30 Minuten",
+    "30 minutos"
+  ],
+  "Battery level": [
+    "电量",
+    "バッテリー残量",
+    "배터리 잔량",
+    "Niveau de batterie",
+    "Akkustand",
+    "Nivel de batería"
+  ],
+  "copy": [
+    "副本",
+    "コピー",
+    "복사본",
+    "copie",
+    "Kopie",
+    "copia"
+  ],
+  "Speed": [
+    "速度",
+    "速度",
+    "속도",
+    "Vitesse",
+    "Geschwindigkeit",
+    "Velocidad"
+  ],
+  "Converge": [
+    "汇聚",
+    "収束",
+    "수렴",
+    "Convergence",
+    "Konvergenz",
+    "Convergencia"
+  ],
+  "Then": [
+    "然后",
+    "実行内容",
+    "다음 동작",
+    "Puis",
+    "Dann",
+    "Después"
+  ],
+  "Memory": [
+    "内存",
+    "メモリ",
+    "메모리",
+    "Mémoire",
+    "Speicher",
+    "Memoria"
+  ],
+  "1 minute": [
+    "1 分钟",
+    "1分",
+    "1분",
+    "1 minute",
+    "1 Minute",
+    "1 minuto"
+  ],
+  "3 minutes": [
+    "3 分钟",
+    "3分",
+    "3분",
+    "3 minutes",
+    "3 Minuten",
+    "3 minutos"
+  ],
+  "5 minutes": [
+    "5 分钟",
+    "5分",
+    "5분",
+    "5 minutes",
+    "5 Minuten",
+    "5 minutos"
+  ],
+  "Profiles": [
+    "配置",
+    "プロファイル",
+    "프로필",
+    "Profils",
+    "Profile",
+    "Perfiles"
+  ],
+  "Mouse": [
+    "鼠标",
+    "マウス",
+    "마우스",
+    "Souris",
+    "Maus",
+    "Ratón"
+  ],
+  "Direction": [
+    "方向",
+    "方向",
+    "방향",
+    "Direction",
+    "Richtung",
+    "Dirección"
+  ],
+  "None": [
+    "无",
+    "なし",
+    "없음",
+    "Aucun",
+    "Keine",
+    "Ninguno"
+  ],
+  "KEYS": [
+    "按键",
+    "キー",
+    "키",
+    "TOUCHES",
+    "TASTEN",
+    "TECLAS"
+  ],
+  "Light": [
+    "浅色",
+    "ライト",
+    "라이트",
+    "Clair",
+    "Hell",
+    "Claro"
+  ],
+  "Keys": [
+    "按键",
+    "キー",
+    "키",
+    "Touches",
+    "Tasten",
+    "Teclas"
+  ],
+  "Neon": [
+    "霓虹",
+    "ネオン",
+    "네온",
+    "Néon",
+    "Neon",
+    "Neón"
+  ],
+  "Left": [
+    "左",
+    "左",
+    "왼쪽",
+    "Gauche",
+    "Links",
+    "Izquierda"
+  ],
+  "Press": [
+    "按下",
+    "押す",
+    "누르기",
+    "Appuyer",
+    "Drücken",
+    "Pulsar"
+  ],
+  "Right": [
+    "右",
+    "右",
+    "오른쪽",
+    "Droite",
+    "Rechts",
+    "Derecha"
+  ],
+  "Import": [
+    "导入",
+    "インポート",
+    "가져오기",
+    "Importer",
+    "Importieren",
+    "Importar"
+  ],
+  "Export": [
+    "导出",
+    "エクスポート",
+    "내보내기",
+    "Exporter",
+    "Exportieren",
+    "Exportar"
+  ],
+  "Tap": [
+    "轻按",
+    "タップ",
+    "탭",
+    "Appui bref",
+    "Tippen",
+    "Toque"
+  ],
+  "Playback": [
+    "播放",
+    "再生",
+    "재생",
+    "Lecture",
+    "Wiedergabe",
+    "Reproducción"
+  ],
+  " level": [
+    " 级",
+    " 段階",
+    " 단계",
+    " niveau",
+    " Stufe",
+    " nivel"
+  ],
+  "keys": [
+    "按键",
+    "キー",
+    "키",
+    "touches",
+    "Tasten",
+    "teclas"
+  ],
+  "Dark": [
+    "深色",
+    "ダーク",
+    "다크",
+    "Sombre",
+    "Dunkel",
+    "Oscuro"
+  ],
+  "Color": [
+    "颜色",
+    "色",
+    "색상",
+    "Couleur",
+    "Farbe",
+    "Color"
+  ],
+  "Single": [
+    "单色",
+    "単色",
+    "단색",
+    "Uni",
+    "Einfarbig",
+    "Único"
+  ],
+  "Release": [
+    "松开",
+    "離す",
+    "떼기",
+    "Relâcher",
+    "Loslassen",
+    "Soltar"
+  ],
+  "Hold": [
+    "长按",
+    "長押し",
+    "길게 누르기",
+    "Maintenir",
+    "Halten",
+    "Mantener"
+  ],
+  "Times": [
+    "次",
+    "回",
+    "회",
+    "Fois",
+    "Mal",
+    "Veces"
+  ],
+  "Open": [
+    "打开",
+    "開く",
+    "열기",
+    "Ouvrir",
+    "Öffnen",
+    "Abrir"
+  ],
+  "WEIKAV guide": [
+    "WEIKAV 指南",
+    "WEIKAVガイド",
+    "WEIKAV 안내서",
+    "Guide WEIKAV",
+    "WEIKAV-Anleitung",
+    "Guía WEIKAV"
+  ],
+  "Toggle lighting power saving": [
+    "切换灯光节能模式",
+    "照明の省電力を切り替え",
+    "조명 절전 전환",
+    "Économie d’éclairage",
+    "Licht-Energiesparmodus",
+    "Ahorro de iluminación"
+  ],
+  "Turn off key and side lights; keep Caps Lock and Win-lock indicators.": [
+    "关闭按键背光和侧灯，保留 Caps Lock 和 Win 锁定指示灯。",
+    "キーとサイドの照明を消し、Caps LockとWinロックの表示を保持します。",
+    "키와 측면 조명을 끄고 Caps Lock 및 Win 잠금 표시등을 유지합니다.",
+    "Éteint les touches et les côtés ; garde les voyants Verr. maj. et verrouillage Win.",
+    "Schaltet Tasten- und Seitenlicht aus; Feststell- und Win-Sperranzeigen bleiben an.",
+    "Apaga las luces de teclas y laterales; mantiene los indicadores Bloq Mayús y bloqueo Win."
+  ],
+  "Roller indicator color": [
+    "旋钮旁指示灯颜色",
+    "ノブ横の表示灯の色",
+    "노브 옆 표시등 색상",
+    "Couleur du voyant de molette",
+    "Drehregler-Anzeigefarbe",
+    "Color del indicador de rueda"
+  ],
+  "Roller indicator mode": [
+    "旋钮旁指示灯模式",
+    "ノブ横の表示灯モード",
+    "노브 옆 표시등 모드",
+    "Mode du voyant de molette",
+    "Drehregler-Anzeigemodus",
+    "Modo del indicador de rueda"
+  ],
+  "Cycle through 7 roller-indicator colors.": [
+    "循环切换旋钮旁指示灯的 7 种颜色。",
+    "ノブ横の表示灯を7色で切り替えます。",
+    "노브 옆 표시등의 7가지 색상을 순환합니다.",
+    "Fait défiler les 7 couleurs du voyant de molette.",
+    "Wechselt zwischen 7 Drehregler-Anzeigefarben.",
+    "Alterna entre 7 colores del indicador de rueda."
+  ],
+  "Roller indicator: always on, breathing or off.": [
+    "旋钮旁指示灯：常亮、呼吸或关闭。",
+    "ノブ横の表示灯：常時点灯、呼吸、またはオフ。",
+    "노브 옆 표시등: 항상 켜짐, 숨쉬기 또는 꺼짐.",
+    "Voyant de molette : allumé, respiration ou éteint.",
+    "Drehregler-Anzeige: dauerhaft an, atmend oder aus.",
+    "Indicador de rueda: encendido, respiración o apagado."
+  ],
+  "Cycle key backlight effects": [
+    "切换按键背光效果",
+    "キーバックライト効果を切り替え",
+    "키 백라이트 효과 전환",
+    "Changer l’effet des touches",
+    "Tastenlichteffekt wechseln",
+    "Cambiar efecto de teclas"
+  ],
+  "Firmware": [
+    "固件",
+    "ファームウェア",
+    "펌웨어",
+    "Micrologiciel",
+    "Firmware",
+    "Firmware"
+  ],
+  "Device profile": [
+    "设备配置",
+    "デバイスプロファイル",
+    "기기 프로필",
+    "Profil de l’appareil",
+    "Geräteprofil",
+    "Perfil del dispositivo"
+  ],
+  "Mode": [
+    "模式",
+    "モード",
+    "모드",
+    "Mode",
+    "Modus",
+    "Modo"
+  ],
+  "Polling rate": [
+    "轮询率",
+    "ポーリングレート",
+    "폴링레이트",
+    "Fréquence d’interrogation",
+    "Abfragerate",
+    "Tasa de sondeo"
+  ],
+  "N-key rollover": [
+    "全键无冲",
+    "Nキーロールオーバー",
+    "N키 롤오버",
+    "Rollover N touches",
+    "N-Key-Rollover",
+    "Rollover de N teclas"
+  ],
+  "Macro": [
+    "宏",
+    "マクロ",
+    "매크로",
+    "Macro",
+    "Makro",
+    "Macro"
+  ],
+  "MACRO": [
+    "宏",
+    "マクロ",
+    "매크로",
+    "MACROS",
+    "MAKROS",
+    "MACROS"
+  ]
+}

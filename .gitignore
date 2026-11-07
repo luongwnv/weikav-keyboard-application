@@ -1,0 +1,15 @@
+/target/
+/dist/
+.DS_Store
+*.log
+/node_modules/
+/website/dist/
+/website/node_modules/
+*.tmp
+*.pkg
+*.zip
+*.exe
+*.res
+.env
+.env.*
+!.env.example

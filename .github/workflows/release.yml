@@ -1,0 +1,86 @@
+name: Build and release
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            platform: macOS-AppleSilicon
+          - os: macos-15-intel
+            platform: macOS-Intel
+          - os: windows-2025
+            platform: Windows-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Set up Rust
+        shell: bash
+        run: |
+          rustup toolchain install stable --profile minimal --component rustfmt --component clippy --no-self-update
+          rustup default stable
+      - name: Find Windows resource compiler
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $rc = Get-ChildItem "${env:ProgramFiles(x86)}\Windows Kits\10\bin\*\x64\rc.exe" | Sort-Object FullName -Descending | Select-Object -First 1
+          if (-not $rc) { throw 'Windows SDK rc.exe was not found' }
+          $rc.DirectoryName | Out-File -FilePath $env:GITHUB_PATH -Append
+      - uses: actions/cache@v5
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: rust-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Cargo.lock') }}-${{ hashFiles('src/**', 'build.rs') }}
+          restore-keys: |
+            rust-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('Cargo.lock') }}-
+      - name: Check, test and lint
+        shell: bash
+        run: |
+          cargo fmt --check
+          cargo test --locked
+          cargo clippy --locked --all-targets -- -D warnings
+      - name: Build macOS installer
+        if: runner.os == 'macOS'
+        run: scripts/package-macos-pkg.sh
+      - name: Build Windows installer and portable archive
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: scripts/package-windows.ps1 -Installer
+      - uses: actions/upload-artifact@v7
+        with:
+          name: NUT-Studio-${{ matrix.platform }}
+          path: dist/release/*
+          if-no-files-found: error
+          retention-days: 7
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          path: release-artifacts
+          merge-multiple: true
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          test "$(awk -F '\"' '/^version =/ {print $2; exit}' Cargo.toml)" = "$version"
+          cd release-artifacts
+          sha256sum ./* > SHA256SUMS.txt
+          cd ..
+          gh release create "$GITHUB_REF_NAME" release-artifacts/* --verify-tag --title "NUT Studio $version" --notes-file docs/RELEASE-NOTES.md
