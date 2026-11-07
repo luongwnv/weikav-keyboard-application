@@ -2084,21 +2084,19 @@ impl eframe::App for NutApp {
                 self.footer(ui, Rect::from_min_max(pos2(0., r.bottom() - 56.), r.max));
             });
         if let Some((message, error, created)) = self.notice.clone() {
-            if error || created.elapsed() < Duration::from_secs(3) {
+            let side_panel = !self.home && self.panel_open();
+            let left_notice = error
+                && !self.home
+                && (side_panel || matches!(self.tab, Tab::Keys | Tab::Lighting | Tab::Advanced));
+            if (error || !side_panel) && (error || created.elapsed() < Duration::from_secs(3)) {
                 egui::Area::new(egui::Id::new("notice"))
                     .anchor(
-                        if error
-                            && !self.home
-                            && matches!(self.tab, Tab::Keys | Tab::Lighting | Tab::Advanced)
-                        {
+                        if left_notice {
                             Align2::LEFT_TOP
                         } else {
                             Align2::RIGHT_TOP
                         },
-                        if error
-                            && !self.home
-                            && matches!(self.tab, Tab::Keys | Tab::Lighting | Tab::Advanced)
-                        {
+                        if left_notice {
                             vec2(
                                 if self.tab == Tab::Keys && self.selected.is_some() {
                                     52.

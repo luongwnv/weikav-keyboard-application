@@ -1,0 +1,182 @@
+[
+  {
+    "id": "devices",
+    "title": "Your devices",
+    "category": "settings",
+    "description": "Saved NUT75 devices, connection state and battery level when the device reports it."
+  },
+  {
+    "id": "connect-device",
+    "title": "Connect a keyboard",
+    "category": "settings",
+    "description": "Scan, connect or disconnect using the actual NUT75 model preview."
+  },
+  {
+    "id": "keys",
+    "title": "Keys and live testing",
+    "category": "keys",
+    "description": "Test keys on the model, including modifiers, the roller and Caps Lock indication."
+  },
+  {
+    "id": "key-assignment",
+    "title": "Assign a key",
+    "category": "keys",
+    "description": "Choose a key and browse normal keyboard assignments."
+  },
+  {
+    "id": "fn-layer",
+    "title": "Fn layer",
+    "category": "keys",
+    "description": "Switch between Default and Fn assignments."
+  },
+  {
+    "id": "media-keys",
+    "title": "Media keys",
+    "category": "keys",
+    "description": "Assign volume, mute, playback and track controls."
+  },
+  {
+    "id": "mouse-keys",
+    "title": "Mouse actions",
+    "category": "keys",
+    "description": "Assign mouse buttons and scrolling actions."
+  },
+  {
+    "id": "macro-assignment",
+    "title": "Macro playback",
+    "category": "keys",
+    "description": "Choose a macro and its playback behavior for a selected key."
+  },
+  {
+    "id": "keyboard-actions",
+    "title": "Keyboard functions",
+    "category": "keys",
+    "description": "Browse keyboard-specific actions in the assignment inspector."
+  },
+  {
+    "id": "lighting-effects",
+    "title": "Key backlighting",
+    "category": "lighting",
+    "description": "Explore 24 choices, preview controls and the manufacturer shortcut guide."
+  },
+  {
+    "id": "color-picker",
+    "title": "Color wheel",
+    "category": "lighting",
+    "description": "Hue, saturation, brightness, RGB, hex and saved custom colors."
+  },
+  {
+    "id": "lighting-caps-lock",
+    "title": "Caps Lock indicator",
+    "category": "lighting",
+    "description": "Indicator-specific guidance and firmware capability information."
+  },
+  {
+    "id": "lighting-side-lights",
+    "title": "Side lights",
+    "category": "lighting",
+    "description": "Side-light guidance and firmware capability information."
+  },
+  {
+    "id": "macros",
+    "title": "Macro sequences",
+    "category": "macros",
+    "description": "Keycap illustrations, recording and action reordering in one workspace."
+  },
+  {
+    "id": "macro-table",
+    "title": "Detailed macro table",
+    "category": "macros",
+    "description": "Inspect each press or release and edit its delay."
+  },
+  {
+    "id": "macro-action",
+    "title": "Edit one action",
+    "category": "macros",
+    "description": "Select an action to edit it, move it or delete it individually."
+  },
+  {
+    "id": "macro-add-action",
+    "title": "Add an action",
+    "category": "macros",
+    "description": "Add a key tap, key down, key up or mouse click."
+  },
+  {
+    "id": "macro-options",
+    "title": "Macro options",
+    "category": "macros",
+    "description": "Recording delays, table mode, undo and memory usage."
+  },
+  {
+    "id": "advanced-keys",
+    "title": "Advanced keys",
+    "category": "advanced",
+    "description": "Choose a key and review advanced assignments."
+  },
+  {
+    "id": "advanced-tap-hold",
+    "title": "Tap / hold (MT)",
+    "category": "advanced",
+    "description": "Separate tap and hold actions with an adjustable threshold."
+  },
+  {
+    "id": "advanced-toggle",
+    "title": "Toggle (TGL)",
+    "category": "advanced",
+    "description": "Configure a toggle action and its timing."
+  },
+  {
+    "id": "advanced-socd",
+    "title": "Opposing keys (SOCD)",
+    "category": "advanced",
+    "description": "Configure behavior for a pair of opposing keys."
+  },
+  {
+    "id": "advanced-combination",
+    "title": "Key combination (CB)",
+    "category": "advanced",
+    "description": "Combine modifier keys with one conventional key."
+  },
+  {
+    "id": "device-settings",
+    "title": "Keyboard settings",
+    "category": "settings",
+    "description": "Operating system, polling, sleep, debounce and key behavior."
+  },
+  {
+    "id": "settings",
+    "title": "App settings",
+    "category": "settings",
+    "description": "Appearance, language, finish and always-visible device information."
+  },
+  {
+    "id": "keyboard-finishes",
+    "title": "Keyboard finishes",
+    "category": "settings",
+    "description": "Choose a finish using keyboard thumbnails."
+  },
+  {
+    "id": "languages",
+    "title": "Eight interface languages",
+    "category": "settings",
+    "description": "Vietnamese, English, Chinese, Japanese, Korean, French, German and Spanish."
+  },
+  {
+    "id": "dark-theme",
+    "title": "Dark appearance",
+    "category": "settings",
+    "description": "Use light, dark or system appearance."
+  },
+  {
+    "id": "profiles",
+    "title": "Local profiles",
+    "category": "settings",
+    "description": "Create, rename, import and export local configuration profiles."
+  },
+  {
+    "id": "error-notification",
+    "title": "Connection errors",
+    "category": "settings",
+    "description": "Persistent errors appear above the keyboard with a dismiss control."
+  }
+]

@@ -4,7 +4,9 @@ A native desktop companion for the **WEIKAV NUT75**, available for **macOS and W
 
 Customize your keyboard, preview lighting, edit macros and test your keys in one place. **NUT75 is the only supported model.**
 
-[Website and screenshots](https://luongwnv.github.io/weikav-app/) · [Download](https://github.com/luongwnv/Weikav-Keyboard-Application/releases/latest) · [Report an issue](https://github.com/luongwnv/Weikav-Keyboard-Application/issues)
+[Website and screenshots](https://luongwnv.github.io/weikav-app/) - [Download](https://github.com/luongwnv/Weikav-Keyboard-Application/releases/latest) - [Report an issue](https://github.com/luongwnv/Weikav-Keyboard-Application/issues)
+
+[Browse all app screens](https://luongwnv.github.io/weikav-app/screenshots.html)
 
 ## Install
 

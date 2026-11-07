@@ -80,6 +80,7 @@ jobs:
         run: |
           version="${GITHUB_REF_NAME#v}"
           test "$(awk -F '\"' '/^version =/ {print $2; exit}' Cargo.toml)" = "$version"
+          zip -j "release-artifacts/NUT-Studio-${version}-Screenshots.zip" docs/screenshots/*.png docs/screenshots/README.md
           cd release-artifacts
           sha256sum ./* > SHA256SUMS.txt
           cd ..

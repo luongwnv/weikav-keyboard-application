@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">From connection to a verified NUT75 configuration</title>
+  <desc id="desc">Connect with USB-C or the 2.4 GHz receiver. Edit and preview a profile locally. Apply writes the settings to NUT75 and reads them back for verification. Bluetooth configuration is unavailable.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path d="m1 1 6 3-6 3" stroke="#a95620" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <pattern id="keys" x="0" y="0" width="22" height="23" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="18" height="18" rx="3" fill="#fff" stroke="#bdbdbd"/></pattern>
+    <style>text{font-family:Inter,Arial,sans-serif;fill:#111}.label{font-size:16px;font-weight:500}.detail{font-size:13px;fill:#777}.step{font-size:12px;fill:#a95620;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.wire{stroke:#e4e4e4;stroke-width:2}.signal{stroke:#a95620;stroke-width:2;stroke-linecap:round}.outline{stroke:#777;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.mobile{display:none}@media(max-width:640px){.desktop{display:none}.mobile{display:inline}.mobile text{font-size:39px}.mobile .small{font-size:29px;fill:#777}}</style>
+  </defs>
+  <g class="desktop">
+  <!-- Independent input paths, intentionally not a wireless Bluetooth route. -->
+  <rect x="50" y="68" width="208" height="89" rx="10" fill="#fff" stroke="#e4e4e4"/>
+  <rect x="73" y="93" width="36" height="19" rx="9.5" class="outline"/><rect x="80" y="99" width="22" height="7" rx="3.5" class="outline"/>
+  <path d="M91 112v17" class="outline"/>
+  <text x="126" y="105" class="label">USB-C</text><text x="126" y="128" class="detail">Wired connection</text>
+  <rect x="50" y="181" width="208" height="89" rx="10" fill="#fff" stroke="#e4e4e4"/>
+  <rect x="77" y="212" width="27" height="28" rx="4" class="outline"/><path d="M83 211v-11h15v11M88 205h1m4 0h1" class="outline"/>
+  <text x="126" y="218" class="label">2.4 GHz</text><text x="126" y="241" class="detail">NUT75 receiver</text>
+  <path d="M258 112h29q17 0 17 17v25q0 16 17 16h36M258 225h29q17 0 17-17v-22q0-16 17-16" class="wire"/>
+  <path d="M258 112h29q17 0 17 17v25q0 16 17 16h36" class="signal" marker-end="url(#arrow)"/>
+  <!-- Local profile card: edits and preview stay on the host until Apply. -->
+  <rect x="369" y="79" width="206" height="182" rx="12" fill="#fff" stroke="#e4e4e4"/>
+  <path d="M396 104h60l13 13v99h-73z" fill="#fafafa" class="outline"/><path d="M456 104v13h13M409 138h46m-46 14h33m-33 14h46" class="outline"/>
+  <circle cx="451" cy="192" r="5" fill="#a95620"/>
+  <text x="484" y="141" class="detail">Keys</text><text x="484" y="165" class="detail">RGB</text><text x="484" y="189" class="detail">Macros</text>
+  <text x="472" y="292" text-anchor="middle" class="label">Local profile</text>
+  <text x="472" y="315" text-anchor="middle" class="detail">Edit and preview on your computer</text>
+  <path d="M575 170h73" class="wire"/><path d="M590 170h47" class="signal" marker-end="url(#arrow)"/>
+  <!-- Write and readback are distinct operations. -->
+  <rect x="660" y="79" width="206" height="182" rx="12" fill="#fff" stroke="#e4e4e4"/>
+  <rect x="690" y="108" width="146" height="44" rx="8" fill="#fafafa" stroke="#e4e4e4"/>
+  <text x="706" y="135" class="step">01</text><text x="741" y="135" class="label">Write</text>
+  <path d="M763 155v27" class="signal" marker-end="url(#arrow)"/>
+  <rect x="690" y="190" width="146" height="44" rx="8" fill="#fff" stroke="#e4e4e4"/>
+  <path d="m706 210 5 5 9-10" class="signal"/>
+  <text x="741" y="216" class="label">Read back</text>
+  <text x="763" y="292" text-anchor="middle" class="label">Apply &amp; verify</text>
+  <text x="763" y="315" text-anchor="middle" class="detail">Save to the keyboard, then check</text>
+  <path d="M866 170h63" class="wire"/><path d="M878 170h39" class="signal" marker-end="url(#arrow)"/>
+  <!-- A compact keyboard silhouette identifies the destination, not an exact product render. -->
+  <g transform="translate(943 118)">
+    <rect width="208" height="103" rx="9" fill="#fafafa" stroke="#777" stroke-width="1.4"/>
+    <rect x="10" y="10" width="188" height="69" rx="2" fill="url(#keys)"/>
+    <rect x="10" y="80" width="28" height="13" rx="3" fill="#fff" stroke="#bdbdbd"/>
+    <rect x="43" y="80" width="100" height="13" rx="3" fill="#fff" stroke="#bdbdbd"/>
+    <rect x="148" y="80" width="23" height="13" rx="3" fill="#fff" stroke="#bdbdbd"/>
+    <rect x="176" y="80" width="22" height="13" rx="3" fill="#fff" stroke="#bdbdbd"/>
+  </g>
+  <text x="1047" y="292" text-anchor="middle" class="label">WEIKAV NUT75</text>
+  <text x="1047" y="315" text-anchor="middle" class="detail">Settings on your device</text>
+  <text x="50" y="343" class="detail">Choose either connection. Bluetooth configuration is not available.</text>
+  </g>
+  <g class="mobile">
+    <g fill="#fff" stroke="#e4e4e4" stroke-width="2"><rect x="25" y="65" width="245" height="190" rx="16"/><rect x="330" y="65" width="245" height="190" rx="16"/><rect x="635" y="65" width="245" height="190" rx="16"/><rect x="940" y="65" width="235" height="190" rx="16"/></g>
+    <g stroke="#a95620" stroke-width="4" marker-end="url(#arrow)"><path d="M280 160h35"/><path d="M585 160h35"/><path d="M890 160h35"/></g>
+    <g text-anchor="middle"><text x="147" y="145">USB-C</text><text x="147" y="200">or 2.4 GHz</text><text x="452" y="145">Local</text><text x="452" y="200">preview</text><text x="757" y="145">Apply</text><text x="757" y="200">&amp; verify</text><text x="1057" y="177">NUT75</text><text x="600" y="320" class="small">Bluetooth configuration is not available.</text></g>
+  </g>
+</svg>

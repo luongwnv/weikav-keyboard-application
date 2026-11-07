@@ -14,3 +14,5 @@ NUT Studio is a native desktop companion for the **WEIKAV NUT75** on macOS and W
 Configuration uses USB-C or the NUT75 2.4 GHz receiver. Bluetooth configuration is not supported. Side-light and separate indicator controls depend on firmware and are unavailable in the app on the tested 1.40 firmware; manufacturer shortcuts are shown instead. GIF/animation upload, audio/AI lighting and firmware updates are not included.
 
 Packages are currently unsigned by a platform developer certificate. macOS and Windows builds are produced on their respective operating systems. Physical hardware validation has been performed on macOS; Windows hardware behavior has not yet been verified.
+
+[Website and screenshot gallery](https://luongwnv.github.io/weikav-app/) - [User guide](https://github.com/luongwnv/Weikav-Keyboard-Application#readme). The screenshot archive contains the 30 original screen captures.
