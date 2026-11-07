@@ -8,6 +8,10 @@ Customize your keyboard, preview lighting, edit macros and test your keys in one
 
 [Browse all app screens](https://luongwnv.github.io/weikav-app/screenshots.html)
 
+![Keys screen showing live key testing](docs/screenshots/readme-keys.png)
+
+![Backlight screen showing lighting effects and keyboard shortcuts](docs/screenshots/readme-backlight.png)
+
 ## Install
 
 - **macOS:** download the `.pkg` for Apple Silicon or Intel, open it and follow the installer. NUT Studio is installed in Applications.
@@ -28,15 +32,11 @@ Hover over a device to reveal its **X** button. Removing a connected device disc
 
 ## Keys
 
-![Keys screen showing live key testing](docs/screenshots/readme-keys.png)
-
 Click a key on the keyboard model to assign a standard key, media control, mouse action, macro or device function. Switch between **Default** and **Fn** layers. The volume roller supports left rotation, right rotation and pressing.
 
 Test keys directly on this screen. Tested keys stay green until you choose **Start again**. Caps Lock and volume roller activity appear on the keyboard model. Some firmware-handled Fn combinations are not reported to the computer.
 
 ## Backlight
-
-![Backlight screen showing lighting effects and keyboard shortcuts](docs/screenshots/readme-backlight.png)
 
 Explore **24 lighting choices**, including custom per-key colors. The keyboard preview demonstrates movement before you apply it. Choose a color with the color wheel, RGB/hex fields, presets or saved colors, and adjust brightness, speed and direction when the selected effect supports them.
 
