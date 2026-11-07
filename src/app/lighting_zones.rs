@@ -103,22 +103,10 @@ impl NutApp {
                 ui.spacing_mut().item_spacing = vec2(10., 8.);
                 ui.add_enabled_ui(!self.busy, |ui| {
                     ui.horizontal(|ui| {
-                        ui.label(RichText::new(tr("Màu")).size(14.));
                         let solid_color = self.solid_color_supported(light.mode);
-                        ui.add_enabled_ui(solid_color, |ui| {
-                            if self.edit_color(ui, "main", &mut light.color) {
-                                light.rainbow = false;
-                            }
-                        })
-                        .response
-                        .on_hover_text(if solid_color {
-                            tr("Chọn màu")
-                        } else if light.mode == 10 {
-                            tr("Cross weave trên firmware này chỉ chạy RGB.")
-                        } else {
-                            tr("Hiệu ứng này chạy màu RGB tự động.")
-                        });
                         if light.mode == 128 {
+                            ui.label(RichText::new(tr("Màu")).size(14.));
+                            self.edit_color(ui, "main", &mut light.color);
                             if ui.add(button("Tô toàn bộ", false)).clicked() {
                                 for id in self.areas.iter().map(|a| a.id).collect::<Vec<_>>() {
                                     self.profile_mut().custom_colors.insert(id, light.color);
@@ -151,6 +139,10 @@ impl NutApp {
                                 if response.clicked() {
                                     light.rainbow = rainbow;
                                 }
+                            }
+                            if solid_color && !light.rainbow {
+                                ui.label(RichText::new(tr("Màu")).size(14.));
+                                self.edit_color(ui, "main", &mut light.color);
                             }
                         }
                         ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {

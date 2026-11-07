@@ -2098,10 +2098,7 @@ impl eframe::App for NutApp {
                 if panel_width > 0. {
                     self.inspector(ui, Rect::from_min_max(pos2(workspace.right(), 0.), r.max));
                 }
-                self.footer(
-                    ui,
-                    Rect::from_min_max(pos2(0., r.bottom() - 56.), workspace.max),
-                );
+                self.footer(ui, Rect::from_min_max(pos2(0., r.bottom() - 56.), r.max));
             });
         if let Some((message, error, created)) = self.notice.clone() {
             let side_panel = !self.home && self.panel_open();
