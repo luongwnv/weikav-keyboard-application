@@ -13,3 +13,6 @@
 
 /* Keep the real keyboard image in its original colors in dark appearance. */
 .dark .flow-frame{background:#fff}.dark .flow-frame img{filter:none}
+
+/* Show the supplied Keys screenshot without an overlapping keyboard illustration. */
+.hero-art{display:block;min-height:0;padding:0}.hero-screenshot{display:block;width:100%;height:auto}
