@@ -1,4 +1,4 @@
-# NUT Studio
+# Weikav Studio
 
 A native desktop companion for the **WEIKAV NUT75**, available for **macOS and Windows**.
 
@@ -14,8 +14,8 @@ Customize your keyboard, preview lighting, edit macros and test your keys in one
 
 ## Install
 
-- **macOS:** download the `.pkg` for Apple Silicon or Intel, open it and follow the installer. NUT Studio is installed in Applications.
-- **Windows:** download the x64 Setup `.exe` and follow the installer, or extract the portable `.zip` and run `NUT Studio.exe`.
+- **macOS:** download the `.pkg` for Apple Silicon or Intel, open it and follow the installer. Weikav Studio is installed in Applications.
+- **Windows:** download the x64 Setup `.exe` and follow the installer, or extract the portable `.zip` and run `Weikav Studio.exe`.
 
 Current packages are not signed with an Apple Developer ID or Windows publisher certificate. Only download packages from this repository’s releases.
 
@@ -23,7 +23,7 @@ Current packages are not signed with an Apple Developer ID or Windows publisher 
 
 1. Close the WEIKAV web driver so it does not compete for the same device.
 2. Connect a data-capable USB-C cable and press **Fn + T** to select USB mode, or use the NUT75 **2.4 GHz receiver**.
-3. Open NUT Studio. Choose your keyboard or select **Add device**.
+3. Open Weikav Studio. Choose your keyboard or select **Add device**.
 4. Choose a feature in the left menu. Changes remain in your local profile until you select **Apply**.
 
 The app reads the keyboard configuration before showing it as connected. Applying a configuration includes a read-back check. Errors stay visible until dismissed. The back arrow returns to the device list without disconnecting.
@@ -73,4 +73,4 @@ Profiles can be named, imported and exported as JSON. Selecting a profile does n
 - GIF/animation upload, audio/AI lighting, firmware updating and factory reset are not included.
 - Physical hardware checks have been performed on macOS. Windows packages are built on Windows; Windows hardware behavior is not yet verified.
 
-NUT Studio is an independent application and is not affiliated with WEIKAV or Logitech. Keyboard artwork and vendor icons belong to their respective owners.
+Weikav Studio is an independent application and is not affiliated with WEIKAV or Logitech. Keyboard artwork and vendor icons belong to their respective owners.

@@ -76,7 +76,7 @@ fn main() -> eframe::Result {
     }
     let options = eframe::NativeOptions {
         viewport: eframe::egui::ViewportBuilder::default()
-            .with_title("NUT75")
+            .with_title("Weikav Studio")
             .with_icon(
                 eframe::icon_data::from_png_bytes(include_bytes!("../assets/app-icon/icon.png"))
                     .expect("bundled NUT75 White icon"),
@@ -88,7 +88,7 @@ fn main() -> eframe::Result {
         ..Default::default()
     };
     eframe::run_native(
-        "NUT Studio",
+        "Weikav Studio",
         options,
         Box::new(|cc| Ok(Box::new(app::NutApp::new(cc)))),
     )

@@ -7,12 +7,13 @@ try {
         cargo build --release --locked
         if ($LASTEXITCODE -ne 0) { throw 'Rust build failed' }
     }
-    $package = Join-Path (Get-Location) 'dist/NUT-Studio-Windows'
-    New-Item -ItemType Directory -Force -Path "$package/assets", 'dist/release' | Out-Null
-    Copy-Item 'target/release/nut-studio.exe' "$package/NUT Studio.exe"
+    $package = Join-Path (Get-Location) 'dist/Weikav-Studio-Windows'
+    New-Item -ItemType Directory -Force -Path "$package/assets", "$package/docs/screenshots", 'dist/release' | Out-Null
+    Copy-Item 'target/release/weikav-studio.exe' "$package/Weikav Studio.exe"
     Copy-Item 'README.md', 'LICENSE' -Destination $package
+    Copy-Item 'docs/screenshots/readme-keys.png', 'docs/screenshots/readme-backlight.png' -Destination "$package/docs/screenshots"
     Copy-Item 'assets/SOURCES.md', 'assets/Inter-LICENSE.txt', 'assets/fonts/NotoSansCJK-LICENSE.txt' -Destination "$package/assets"
-    Compress-Archive -Path "$package/*" -DestinationPath "dist/release/NUT-Studio-$version-Windows-x64.zip" -Force
+    Compress-Archive -Path "$package/*" -DestinationPath "dist/release/Weikav-Studio-$version-Windows-x64.zip" -Force
     if ($Installer) {
         $compiler = Get-Command ISCC.exe -ErrorAction SilentlyContinue
         $iscc = if ($compiler) { $compiler.Source } else { "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" }

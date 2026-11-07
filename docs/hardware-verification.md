@@ -5,8 +5,8 @@ Date: 2026-11-07. Host: macOS, Apple Silicon. Connection: 2.4 GHz.
 After the user confirmed that the keyboard was awake, the release binary completed its read-only diagnostic successfully:
 
 ```sh
-./target/release/nut-studio --list-devices
-NUT75_TRACE_HID=1 ./target/release/nut-studio --probe
+./target/release/weikav-studio --list-devices
+NUT75_TRACE_HID=1 ./target/release/weikav-studio --probe
 ```
 
 Observed results:

@@ -799,6 +799,7 @@ impl Default for Library {
 }
 
 pub fn data_path() -> std::path::PathBuf {
+    // Retain the original data directory so existing profiles survive the rename.
     directories::ProjectDirs::from("studio", "NUT75", "NUT Studio")
         .map(|dirs| dirs.config_dir().join("profiles.json"))
         .unwrap_or_else(|| std::path::PathBuf::from("nut-studio-profiles.json"))

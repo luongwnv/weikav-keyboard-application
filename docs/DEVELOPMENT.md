@@ -1,6 +1,6 @@
 # Development and packaging
 
-NUT Studio uses Rust and egui/eframe. There is no Electron, browser wrapper or embedded web driver. Protocol notes and hardware observations are in this directory.
+Weikav Studio uses Rust and egui/eframe. There is no Electron, browser wrapper or embedded web driver. Protocol notes and hardware observations are in this directory.
 
 ## Requirements
 
@@ -25,7 +25,7 @@ On Windows:
 scripts/package-windows.ps1 -Installer
 ```
 
-Release packages go to `dist/release`, which is ignored by Git. macOS packages install to `/Applications/NUT Studio.app`. The packages are currently unsigned by a platform developer certificate. Only app bundles are ad-hoc signed locally.
+Release packages go to `dist/release`, which is ignored by Git. macOS packages install to `/Applications/Weikav Studio.app`. The packages are currently unsigned by a platform developer certificate. Only app bundles are ad-hoc signed locally.
 
 Push a `v<version>` tag matching `Cargo.toml` to build Apple Silicon/Intel macOS packages, a Windows x64 installer and a portable archive. The release workflow tests each platform, generates SHA-256 checksums and publishes a release only after all build jobs pass. A normal main-branch push runs the same build without publishing a release.
 

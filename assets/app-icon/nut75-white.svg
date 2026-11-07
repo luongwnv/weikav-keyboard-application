@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-<title>NUT Studio — NUT75 White</title>
+<title>Weikav Studio — NUT75 White</title>
 <defs><linearGradient id="tile" x2=".6" y2="1"><stop stop-color="#454950"/><stop offset="1" stop-color="#26292e"/></linearGradient>
 <linearGradient id="case" x2="0" y2="1"><stop stop-color="#fafbf9"/><stop offset="1" stop-color="#d7dcd8"/></linearGradient>
 <linearGradient id="wheel" x2="0" y2="1"><stop stop-color="#525c5d"/><stop offset=".45" stop-color="#d4dddd"/><stop offset=".7" stop-color="#adb9b9"/><stop offset="1" stop-color="#4e595b"/></linearGradient></defs>

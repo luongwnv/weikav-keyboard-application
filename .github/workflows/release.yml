@@ -57,7 +57,7 @@ jobs:
         run: scripts/package-windows.ps1 -Installer
       - uses: actions/upload-artifact@v7
         with:
-          name: NUT-Studio-${{ matrix.platform }}
+          name: Weikav-Studio-${{ matrix.platform }}
           path: dist/release/*
           if-no-files-found: error
           retention-days: 7
@@ -80,8 +80,8 @@ jobs:
         run: |
           version="${GITHUB_REF_NAME#v}"
           test "$(awk -F '\"' '/^version =/ {print $2; exit}' Cargo.toml)" = "$version"
-          zip -j "release-artifacts/NUT-Studio-${version}-Screenshots.zip" docs/screenshots/*.png docs/screenshots/README.md
+          zip -j "release-artifacts/Weikav-Studio-${version}-Screenshots.zip" docs/screenshots/*.png docs/screenshots/README.md
           cd release-artifacts
           sha256sum ./* > SHA256SUMS.txt
           cd ..
-          gh release create "$GITHUB_REF_NAME" release-artifacts/* --verify-tag --title "NUT Studio $version" --notes-file docs/RELEASE-NOTES.md
+          gh release create "$GITHUB_REF_NAME" release-artifacts/* --verify-tag --title "Weikav Studio $version" --notes-file docs/RELEASE-NOTES.md

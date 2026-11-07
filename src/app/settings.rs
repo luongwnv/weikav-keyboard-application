@@ -253,7 +253,7 @@ impl NutApp {
                                 );
                                 ui.label(
                                     RichText::new(format!(
-                                        "NUT Studio {}",
+                                        "Weikav Studio {}",
                                         env!("CARGO_PKG_VERSION")
                                     ))
                                     .size(12.)

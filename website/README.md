@@ -1,4 +1,4 @@
-# WEIKAV App
+# Weikav Studio
 
 A native desktop companion for WEIKAV keyboards, starting with NUT75.
 
