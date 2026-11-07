@@ -2726,5 +2726,45 @@
     "MACROS",
     "MAKROS",
     "MACROS"
+  ],
+  "Could not connect the keyboard": [
+    "无法连接键盘",
+    "キーボードを接続できませんでした",
+    "키보드를 연결할 수 없습니다",
+    "Impossible de connecter le clavier",
+    "Tastatur konnte nicht verbunden werden",
+    "No se pudo conectar el teclado"
+  ],
+  "Could not apply settings": [
+    "无法应用设置",
+    "設定を適用できませんでした",
+    "설정을 적용할 수 없습니다",
+    "Impossible d’appliquer les paramètres",
+    "Einstellungen konnten nicht angewendet werden",
+    "No se pudo aplicar la configuración"
+  ],
+  "Could not scan for devices": [
+    "无法扫描设备",
+    "デバイスを検索できませんでした",
+    "장치를 검색할 수 없습니다",
+    "Impossible de rechercher les appareils",
+    "Geräte konnten nicht gesucht werden",
+    "No se pudieron buscar dispositivos"
+  ],
+  "Keyboard disconnected": [
+    "键盘已断开连接",
+    "キーボードの接続が切れました",
+    "키보드 연결이 끊어졌습니다",
+    "Clavier déconnecté",
+    "Tastatur getrennt",
+    "Teclado desconectado"
+  ],
+  "Could not disconnect the keyboard": [
+    "无法断开键盘连接",
+    "キーボードを切断できませんでした",
+    "키보드 연결을 해제할 수 없습니다",
+    "Impossible de déconnecter le clavier",
+    "Tastatur konnte nicht getrennt werden",
+    "No se pudo desconectar el teclado"
   ]
 }

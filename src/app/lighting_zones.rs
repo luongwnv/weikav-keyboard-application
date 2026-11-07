@@ -1,5 +1,83 @@
 use super::*;
 
+fn color_mode_card(
+    ui: &mut egui::Ui,
+    selected: bool,
+    enabled: bool,
+    rainbow: bool,
+    color: [u8; 3],
+) -> egui::Response {
+    let (rect, response) = ui.allocate_exact_size(
+        vec2(112., 48.),
+        if enabled {
+            Sense::click()
+        } else {
+            Sense::hover()
+        },
+    );
+    let painter = ui.painter();
+    painter.rect(
+        rect,
+        6.,
+        if selected {
+            purple().gamma_multiply(0.12)
+        } else {
+            surface()
+        },
+        Stroke::new(
+            if selected { 1.5_f32 } else { 1. },
+            if selected { purple() } else { line() },
+        ),
+        StrokeKind::Inside,
+    );
+    let colors = [
+        Color32::from_rgb(255, 104, 118),
+        Color32::from_rgb(255, 179, 85),
+        Color32::from_rgb(239, 218, 93),
+        Color32::from_rgb(104, 210, 156),
+        Color32::from_rgb(90, 196, 225),
+        Color32::from_rgb(166, 117, 245),
+    ];
+    let origin = rect.min + vec2(10., 13.);
+    for row in 0..3 {
+        for col in 0..6 {
+            let fill = if rainbow {
+                colors[(col + row) % colors.len()]
+            } else {
+                Color32::from_rgb(color[0], color[1], color[2])
+            };
+            let key = Rect::from_min_size(
+                origin + vec2(col as f32 * 5.4, row as f32 * 7.5),
+                vec2(4.3, 5.7),
+            );
+            painter.rect(
+                key,
+                1.,
+                fill,
+                Stroke::new(0.5_f32, muted().gamma_multiply(0.5)),
+                StrokeKind::Inside,
+            );
+        }
+    }
+    text(
+        painter,
+        pos2(rect.left() + 49., rect.center().y),
+        if rainbow { "RGB" } else { "Đơn" },
+        14.,
+        if selected { purple() } else { muted() },
+        Align2::LEFT_CENTER,
+    );
+    response.widget_info(|| {
+        egui::WidgetInfo::selected(
+            egui::WidgetType::SelectableLabel,
+            enabled,
+            selected,
+            tr(if rainbow { "RGB" } else { "Đơn" }),
+        )
+    });
+    response
+}
+
 impl NutApp {
     pub(super) fn solid_color_supported(&self, mode: u8) -> bool {
         !matches!(mode, 0 | 6 | 8 | 23)
@@ -47,23 +125,30 @@ impl NutApp {
                                 }
                                 self.changed();
                             }
-                        } else if !solid_color {
-                            ui.label(RichText::new("RGB").size(14.).color(purple()));
-                        } else {
+                        } else if light.mode != 0 {
                             for (rainbow, name) in [(false, "Đơn"), (true, "RGB")] {
-                                if ui
-                                    .add(
-                                        egui::Button::new(RichText::new(tr(name)).size(14.).color(
-                                            if light.rainbow == rainbow {
-                                                purple()
-                                            } else {
-                                                muted()
-                                            },
-                                        ))
-                                        .frame(false),
-                                    )
-                                    .clicked()
-                                {
+                                let selected = if solid_color {
+                                    light.rainbow == rainbow
+                                } else {
+                                    rainbow
+                                };
+                                let response = color_mode_card(
+                                    ui,
+                                    selected,
+                                    solid_color,
+                                    rainbow,
+                                    light.color,
+                                );
+                                let response = if solid_color {
+                                    response.on_hover_text(tr(name))
+                                } else {
+                                    response.on_hover_text(tr(if light.mode == 10 {
+                                        "Cross weave trên firmware này chỉ chạy RGB."
+                                    } else {
+                                        "Hiệu ứng này chạy màu RGB tự động."
+                                    }))
+                                };
+                                if response.clicked() {
                                     light.rainbow = rainbow;
                                 }
                             }

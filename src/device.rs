@@ -609,6 +609,13 @@ impl Worker {
                         Err(mpsc::RecvTimeoutError::Disconnected) => break,
                         Err(mpsc::RecvTimeoutError::Timeout) => None,
                     };
+                    let error_summary = match command.as_ref() {
+                        Some(Command::Connect(_)) => "Không kết nối được bàn phím",
+                        Some(Command::Apply(_)) => "Không áp dụng được cấu hình",
+                        Some(Command::Scan) => "Không tìm được thiết bị",
+                        Some(Command::Refresh) | None => "Mất kết nối bàn phím",
+                        Some(Command::Disconnect) => "Không ngắt kết nối được bàn phím",
+                    };
                     let result: Result<Option<Event>> = (|| match command {
                         Some(Command::Scan) => Ok(Some(Event::Devices(enumerate()?))),
                         Some(Command::Connect(entry)) => {
@@ -641,7 +648,8 @@ impl Worker {
                         Ok(event) => event,
                         Err(error) => {
                             session = None;
-                            Some(Event::Error(format!("{error:#}")))
+                            eprintln!("{error:#}");
+                            Some(Event::Error(error_summary.into()))
                         }
                     };
                     if let Some(event) = event {
@@ -708,5 +716,33 @@ mod lighting_capability_tests {
         assert!(!lighting_matches_firmware("1.41", &expected, &actual));
         actual.brightness = 1;
         assert!(!lighting_matches_firmware("1.40", &expected, &actual));
+    }
+
+    #[test]
+    fn supported_effects_detect_color_mode_changes_in_both_directions() {
+        for &(mode, _) in crate::model::LIGHT_MODES {
+            if matches!(mode, 0 | 6 | 8 | 10 | 23 | 128) {
+                continue;
+            }
+            let single = Lighting {
+                mode,
+                rainbow: false,
+                ..Lighting::default()
+            };
+            let rgb = Lighting {
+                rainbow: true,
+                ..single.clone()
+            };
+            assert!(
+                !lighting_matches_firmware("1.40", &single, &rgb),
+                "mode {mode}"
+            );
+            assert!(
+                !lighting_matches_firmware("1.40", &rgb, &single),
+                "mode {mode}"
+            );
+            assert!(lighting_matches_firmware("1.40", &single, &single));
+            assert!(lighting_matches_firmware("1.40", &rgb, &rgb));
+        }
     }
 }

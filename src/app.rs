@@ -115,6 +115,7 @@ pub struct NutApp {
     record_delays: bool,
     macro_undo: Option<(u8, crate::features::Macro)>,
     auto_connect: bool,
+    automatic_connect_attempt: bool,
     connection_target: Option<String>,
 }
 
@@ -205,9 +206,10 @@ impl NutApp {
             Err(error) => (
                 Library::default(),
                 Some((
-                    format!(
-                        "Không đọc được hồ sơ cũ: {error:#}. Tệp gốc được giữ nguyên; xuất hồ sơ mới để lưu."
-                    ),
+                    {
+                        eprintln!("{error:#}");
+                        "Không đọc được hồ sơ cũ".into()
+                    },
                     true,
                     Instant::now(),
                 )),
@@ -311,6 +313,7 @@ impl NutApp {
             record_delays: true,
             macro_undo: None,
             auto_connect: true,
+            automatic_connect_attempt: false,
             connection_target: None,
         }
     }
@@ -333,7 +336,11 @@ impl NutApp {
 
     fn send(&mut self, command: Command) {
         match &command {
-            Command::Connect(entry) => self.connection_target = Some(entry.path.clone()),
+            Command::Connect(entry) => {
+                self.auto_connect = true;
+                self.automatic_connect_attempt = false;
+                self.connection_target = Some(entry.path.clone());
+            }
             Command::Disconnect => {
                 self.auto_connect = false;
                 self.connection_target = None;
@@ -355,13 +362,29 @@ impl NutApp {
                         .any(|e| e.supported && !self.devices.iter().any(|old| old.path == e.path));
                     self.devices = devices;
                     self.busy = false;
-                    if self.auto_connect || newly_attached {
-                        self.auto_connect = false;
-                        if self.snapshot.is_none()
-                            && let Some(entry) = self
-                                .devices
-                                .iter()
-                                .filter(|e| {
+                    if (self.auto_connect || newly_attached)
+                        && self.connection_target.is_none()
+                        && self.snapshot.is_none()
+                        && let Some(entry) = self
+                            .devices
+                            .iter()
+                            .filter(|e| {
+                                e.supported
+                                    && !self.library.device_hidden(
+                                        &e.name,
+                                        e.vendor_id,
+                                        e.product_id,
+                                    )
+                            })
+                            .find(|e| {
+                                self.library.devices.iter().any(|d| {
+                                    d.name == e.name
+                                        && d.vendor_id == e.vendor_id
+                                        && d.product_id == e.product_id
+                                })
+                            })
+                            .or_else(|| {
+                                self.devices.iter().find(|e| {
                                     e.supported
                                         && !self.library.device_hidden(
                                             &e.name,
@@ -369,31 +392,16 @@ impl NutApp {
                                             e.product_id,
                                         )
                                 })
-                                .find(|e| {
-                                    self.library.devices.iter().any(|d| {
-                                        d.name == e.name
-                                            && d.vendor_id == e.vendor_id
-                                            && d.product_id == e.product_id
-                                    })
-                                })
-                                .or_else(|| {
-                                    self.devices.iter().find(|e| {
-                                        e.supported
-                                            && !self.library.device_hidden(
-                                                &e.name,
-                                                e.vendor_id,
-                                                e.product_id,
-                                            )
-                                    })
-                                })
-                                .cloned()
-                        {
-                            self.send(Command::Connect(entry));
-                        }
+                            })
+                            .cloned()
+                    {
+                        self.send(Command::Connect(entry));
+                        self.automatic_connect_attempt = true;
                     }
                 }
                 Event::Connected(snapshot) => {
                     self.connection_target = None;
+                    self.automatic_connect_attempt = false;
                     let entry = &snapshot.entry;
                     if self.library.remember_device(model::KnownDevice {
                         name: entry.name.clone(),
@@ -423,10 +431,14 @@ impl NutApp {
                     self.tell("Đã ngắt kết nối", false);
                 }
                 Event::Error(error) => {
+                    let automatic_attempt = self.automatic_connect_attempt;
+                    self.automatic_connect_attempt = false;
                     self.connection_target = None;
                     self.snapshot = None;
                     self.busy = false;
-                    self.tell(format!("{error}\nHồ sơ trên máy vẫn được giữ."), true);
+                    if !automatic_attempt {
+                        self.tell(error, true);
+                    }
                 }
             }
         }
@@ -503,10 +515,8 @@ impl NutApp {
             Ok(_) => self.needs_save = false,
             Err(error) => {
                 self.save_error = true;
-                self.tell(
-                    format!("Không lưu được hồ sơ: {error:#}. Bạn có thể xuất hồ sơ ra tệp JSON."),
-                    true,
-                );
+                eprintln!("{error:#}");
+                self.tell("Không lưu được hồ sơ", true);
             }
         }
     }
@@ -523,7 +533,10 @@ impl NutApp {
                 .and_then(|bytes| Ok(std::fs::write(&path, bytes)?));
             match result {
                 Ok(_) => self.tell(format!("Đã xuất hồ sơ: {}", path.display()), false),
-                Err(error) => self.tell(format!("Không xuất được hồ sơ: {error}"), true),
+                Err(error) => {
+                    eprintln!("{error:#}");
+                    self.tell("Không xuất được hồ sơ", true);
+                }
             }
         }
     }
@@ -553,7 +566,10 @@ impl NutApp {
                     self.changed();
                     self.tell("Đã nhập hồ sơ", false);
                 }
-                Err(error) => self.tell(format!("Không nhập được hồ sơ: {error:#}"), true),
+                Err(error) => {
+                    eprintln!("{error:#}");
+                    self.tell("Không nhập được hồ sơ", true);
+                }
             }
         }
     }
@@ -1667,6 +1683,7 @@ impl NutApp {
         let has_edits = !self.profile().base.is_empty()
             || !self.profile().function.is_empty()
             || self.profile().lighting.is_some()
+            || self.profile().side_lighting.is_some()
             || !self.profile().macros.is_empty()
             || !self.profile().custom_colors.is_empty()
             || self.profile().settings.is_some();
@@ -2081,7 +2098,10 @@ impl eframe::App for NutApp {
                 if panel_width > 0. {
                     self.inspector(ui, Rect::from_min_max(pos2(workspace.right(), 0.), r.max));
                 }
-                self.footer(ui, Rect::from_min_max(pos2(0., r.bottom() - 56.), r.max));
+                self.footer(
+                    ui,
+                    Rect::from_min_max(pos2(0., r.bottom() - 56.), workspace.max),
+                );
             });
         if let Some((message, error, created)) = self.notice.clone() {
             let side_panel = !self.home && self.panel_open();

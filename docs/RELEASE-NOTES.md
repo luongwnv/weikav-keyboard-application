@@ -1,5 +1,8 @@
-Weikav Studio (formerly NUT Studio) is a native desktop companion for the **WEIKAV NUT75** on macOS and Windows.
+Weikav Studio 0.9.2 (formerly NUT Studio) is a native desktop companion for the **WEIKAV NUT75** on macOS and Windows.
 
+- Automatically retry connecting when a supported keyboard becomes available.
+- Choose Single or RGB with visual previews; pending changes appear beside the workspace.
+- See concise error messages for connection, settings and profile operations.
 - Remap keys and the volume roller on Default and Fn layers.
 - Test keys, modifier keys, Caps Lock and roller input in the Keys screen.
 - Preview 24 lighting modes, use a color wheel and assign per-key colors.

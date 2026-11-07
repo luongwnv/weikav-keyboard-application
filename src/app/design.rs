@@ -512,6 +512,17 @@ const TRANSLATIONS: &[(&str, &str)] = &[
     ("Chức năng từ thiết bị", "Device function"),
     ("Không nhập được hồ sơ", "Could not import the profile"),
     ("Không xuất được hồ sơ", "Could not export the profile"),
+    (
+        "Không kết nối được bàn phím",
+        "Could not connect the keyboard",
+    ),
+    ("Không áp dụng được cấu hình", "Could not apply settings"),
+    ("Không tìm được thiết bị", "Could not scan for devices"),
+    ("Mất kết nối bàn phím", "Keyboard disconnected"),
+    (
+        "Không ngắt kết nối được bàn phím",
+        "Could not disconnect the keyboard",
+    ),
     ("Sắc độ và độ bão hoà", "Hue and saturation"),
     ("Phát / tạm dừng demo", "Play / pause preview"),
     ("Đổi Ctrl / Caps Lock", "Swap Ctrl / Caps Lock"),
